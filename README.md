@@ -4,51 +4,49 @@ Event-Narwhal
 Final Project, 1st Term SoftDev
 
 ##Miranda: 
-   *El Jefe 
+  El Jefe 
 
- Database (MongoDB)
- *Set up schema 
- *Store by events 
- *Logic Stuff
+* Database (MongoDB)
+ * Set up schema 
+ * Store by events 
+ * Logic Stuff
 
 ##Jenny:
   In charge of front end
   bootstrap/js 
-  *Pages:
+  * Pages:
    * Login w/ Facebook
    * My Events Page
    * Host Event Page 
    * Guest/Public Event Page
 
 ##Sydney:
-
-    *Seamless/Yumly/8traks API
-  
-    *Geolocation?
+ * Seamless/Yumly/8tracks API
+ * Geolocation?
   
 ##Leon:
-  Facebook API and OAuth
-    *Accessing Events
-    *Linking Events
-    *Event Info
-    *Event modification - We need to look into this?
-    *OAuth permissions 
-  
-Time Line:
+Facebook API and OAuth
+  * Accessing Events
+  * Linking Events
+  * Event Info
+  * Event modification - We need to look into this?
+  * OAuth permissions 
 
-*12/17
 
-    *Email Seamless- Sydney and Jenny
-    *Schema for database - Miranda
-    *Figure out extent to which we can modify events on through facebook- Leon
+##Timeline:
 
-*12/22
+####12/17
 
-    *Basic framework for base.html My Events and Host Events -Jenny
-    *Working database with methods for getting and adding events and users to database -Miranda
+  * Email Seamless- Sydney and Jenny
+  * Schema for database - Miranda
+  * Figure out extent to which we can modify events on through facebook- Leon
 
-*1/3
+####12/22
 
-    *Seamless/Yummly/Facebook API calls working to specifictions
-    
+  * Basic framework for base.html My Events and Host Events -Jenny
+  * Working database with methods for getting and adding events and users to database -Miranda
+
+####1/3
+
+  * Seamless/Yummly/Facebook API calls working to specifictions
 TBD
