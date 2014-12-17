@@ -22,9 +22,9 @@ Final Project, 1st Term SoftDev
 
 ##Sydney:
 
-  *Seamless/Yumly/8traks API
+    *Seamless/Yumly/8traks API
   
-  *Geolocation?
+    *Geolocation?
   
 ##Leon:
   Facebook API and OAuth
