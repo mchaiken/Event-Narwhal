@@ -3,39 +3,30 @@ Event-Narwhal
 
 Final Project, 1st Term SoftDev
 
-Miranda:
+##Miranda: 
+      *El Jefe 
 
-  *Database (MongoDB)
+ Database (MongoDB)
+ *Set up schema 
+ *Store by events 
+ *Logic Stuff
 
-    *Set up schema 
-    
-    *Store by events 
-    
-    * Logic Stuff
+##Jenny:
+ *In charge of front end
+ *bootstrap/js 
+ *Pages:
+ * Login w/ Facebook
+* My Events Page
+* Host Event Page 
+ * Guest/Public Event Page
 
-Jenny:
-
-  *In charge of front end
-  
-    *bootstrap/js 
-    
-    *Pages:
-    
-      * Login w/ Facebook
-      
-      * My Events Page
-      
-      * Host Event Page 
-      
-      * Guest/Public Event Page
-      
-Sydney:
+##Sydney:
 
   *Seamless/Yumly/8traks API
   
   *Geolocation?
   
-Leon:
+##Leon:
 
   *Facebook API and OAuth
     *Accessing Events
