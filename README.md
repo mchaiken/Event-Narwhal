@@ -12,9 +12,9 @@ Final Project, 1st Term SoftDev
  *Logic Stuff
 
 ##Jenny:
- *In charge of front end
- *bootstrap/js 
- *Pages:
+  In charge of front end
+  bootstrap/js 
+  *Pages:
    * Login w/ Facebook
    * My Events Page
    * Host Event Page 
@@ -27,8 +27,7 @@ Final Project, 1st Term SoftDev
   *Geolocation?
   
 ##Leon:
-
-  *Facebook API and OAuth
+  Facebook API and OAuth
     *Accessing Events
     *Linking Events
     *Event Info
