@@ -4,7 +4,7 @@ Event-Narwhal
 Final Project, 1st Term SoftDev
 
 ##Miranda: 
-      *El Jefe 
+   *El Jefe 
 
  Database (MongoDB)
  *Set up schema 
@@ -15,10 +15,10 @@ Final Project, 1st Term SoftDev
  *In charge of front end
  *bootstrap/js 
  *Pages:
- * Login w/ Facebook
-* My Events Page
-* Host Event Page 
- * Guest/Public Event Page
+   * Login w/ Facebook
+   * My Events Page
+   * Host Event Page 
+   * Guest/Public Event Page
 
 ##Sydney:
 
@@ -30,12 +30,9 @@ Final Project, 1st Term SoftDev
 
   *Facebook API and OAuth
     *Accessing Events
-    
     *Linking Events
-    
     *Event Info
     *Event modification - We need to look into this?
-    
     *OAuth permissions 
   
 Time Line:
