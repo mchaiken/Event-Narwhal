@@ -37,14 +37,14 @@ Facebook API and OAuth
 
 ####12/17
 
-  * Email Seamless- Sydney and Jenny
+  * Email Seamless - Sydney and Jenny
   * Schema for database - Miranda
-  * Figure out extent to which we can modify events on through facebook- Leon
+  * Figure out extent to which we can modify events on through Facebook - Leon
 
 ####12/22
 
-  * Basic framework for base.html My Events and Host Events -Jenny
-  * Working database with methods for getting and adding events and users to database -Miranda
+  * Basic framework for base.html My Events and Host Events - Jenny
+  * Working database with methods for getting and adding events and users to database - Miranda
 
 ####1/3
 
