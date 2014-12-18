@@ -7,6 +7,8 @@
 </head>
 
 <body>
+
+ {% block bodycontent %}
 <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -31,8 +33,6 @@
   data-width="450"
   data-show-faces="true">
 </div>
- {% block bodycontent %}
-
  {% endblock bodycontent %}
  
 </body>
