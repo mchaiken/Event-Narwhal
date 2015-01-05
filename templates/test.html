@@ -5,6 +5,8 @@
 <meta charset="UTF-8">
 </head>
 <body>
+
+<!-- all of this is for a clickable FB login button -->
 <script>
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
@@ -40,7 +42,7 @@
 
   window.fbAsyncInit = function() {
   FB.init({
-    appId      : '1003039823056323',
+    appId      : '1003039823056323', <!-- important: replace with app id -->
     cookie     : true,  // enable cookies to allow the server to access 
                         // the session
     xfbml      : true,  // parse social plugins on this page
@@ -93,7 +95,25 @@
 -->
 
 <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
+</fb:login-button>        <!-- in scope, put what you want to access -->
+
+
+<!--
+LOGIN 
+.login() prompts user to login by opening a popup (might be useful if used
+with event watcher and a button, if we dont want the default login with fb 
+button)
+.logout() logs out from app AND from fb
+.getLoginStatus() gets fb login status; if logged in, has authResponse object
+
+
+PERMISSIONS
+you ask for permissions in the scope section (in this example, in the 
+login-button tag)
+
+-->
+
+
 
 <div id="status">
 </div>
