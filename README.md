@@ -44,9 +44,12 @@ Facebook API and OAuth
 ####12/22
 
   * Basic framework for base.html My Events and Host Events - Jenny
+
+####1/5
+
   * Working database with methods for getting and adding events and users to database - Miranda
-
-####1/3
-
-  * Seamless/Yummly/Facebook API calls working to specifictions
-TBD
+  
+####1/9
+  * Yummly API - Sydney
+  * 8traks - Jenny
+  * Facebook API - Leon and Miranda
