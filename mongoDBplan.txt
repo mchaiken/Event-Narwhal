@@ -1,23 +1,22 @@
 Mongo DB Schema:
 users{
-user{
+{
 	fbID: ""
 	name: ""
-	events:{
-		event:{
+	events[
+		{
 			name:,
 			theme:
 			food-selections:,
-			todo-list:,
 			date:,
 			location:,
 			facebook-link:,
-			attending: {},
-			declined: {},
-			maybe: {},
+			attending: [],
+			declined: [],
+			maybe: [],
 			not-responded:{},
 			to-do:{},
-			}
+			},
 		}
 	}
 }

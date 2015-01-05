@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from pymongo import Connection
 
-app = Flask(__name__)
-conn = sqlite3.connect("events.db", check_same_thread=False)
-c = conn.cursor()
+#mongo setup
+conn = Connection()
+db = conn["even_narwhal"]
+
 
 
 def validated(user_id):
