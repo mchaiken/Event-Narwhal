@@ -62,7 +62,9 @@
   // These three cases are handled in the callback function.
 
   FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
+  console.log(response["authResponse"]["userID"]);
+  statusChangeCallback(response);
+  
   });
 
   };
