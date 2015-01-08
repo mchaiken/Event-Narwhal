@@ -1,0 +1,14 @@
+def getSong(tag):
+    url="http://8tracks.com/mix_sets/tags:"+tag.lower()+".json?api_key=52947991b38f982d9dc6842c0bd653fcd0df0a20&include=mixes"
+    print url
+    request = urllib2.urlopen(url)
+    result = request.read()
+    d = json.loads(result)
+    index=random.randrange(0,10)
+    if index >= len(d["mixes"]):
+        index = len(d["mixes"]) -1
+    if index == -1:
+        url= getSong("cooking")
+    else:    
+        url=d["mixes"][index]["restful_url"]
+    return url
