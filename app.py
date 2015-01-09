@@ -16,7 +16,11 @@ app = Flask(__name__)
 
 def validated(user_id):
     sessions[user]= db.users.find("user_id:"+user_id)
-    
+
+
+@app.route("/", methods = ["GET", "POST"])
+def home():
+    return render_template("home.html")
 @app.route("/login", methods = ["GET", "POST"])
 def login():
     return render_template("login.html")
@@ -25,6 +29,7 @@ def login():
 @app.route("/register", methods = ["GET", "POST"])
 def register():
     return render_template("login.html")
+
 #logout button on other pages will redirect to this
 @app.route("/logout")
 def logout():
