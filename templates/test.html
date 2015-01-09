@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Facebook Login JavaScript Example</title>
-<meta charset="UTF-8">
-</head>
-<body>
+{% extends "base.html" %}
 
+{%block bodycontent %}
 <!-- all of this is for a clickable FB login button -->
 <script>
   // This is called with the results from from FB.getLoginStatus().
@@ -95,10 +90,11 @@
   the JavaScript SDK to present a graphical Login button that triggers
   the FB.login() function when clicked.
 -->
-
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+<div class= "jumbotron">
+	<h1>Log in!</h1>
+<fb:login-button scope="public_profile,email"  onlogin="checkLoginState();">
 </fb:login-button>        <!-- in scope, put what you want to access -->
-
+</div>
 
 <!--
 LOGIN 
@@ -119,6 +115,4 @@ login-button tag)
 
 <div id="status">
 </div>
-
-</body>
-</html>
+{%endblock bodycontent %}
