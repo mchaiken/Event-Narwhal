@@ -1,18 +1,21 @@
+from flask import Flask, render_template, request, redirect, url_for, session
+from pymongo import Connection
+
 #mongo setup
 conn = Connection()
-db = conn["event_narwhal"]
+db = conn["even_narwhal"]
 
-#flask setup
-app = Flask(__name__)
 
 
 def validated(user_id):
-    sessions[user]= db.users.find("user_id":user_id);
+    sessions[user]= db.users.find("user_id:"+user_id);
 
 @app.route("/login", methods = ["GET", "POST"])
 def login():
     return render_template("login.html")
-
+@app.route("/register", methods = ["GET", "POST"])
+def register():
+    return render_template("login.html")
 #logout button on other pages will redirect to this
 @app.route("/logout")
 def logout():
