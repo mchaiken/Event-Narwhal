@@ -1,5 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from pymongo import Connection
+#pip install facebook-sdk
+import facebook
+
+#fb setup
+graph = facebook.GraphAPI(oauth_access_token)
 
 #mongo setup
 conn = Connection()
