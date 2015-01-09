@@ -23,7 +23,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Event Narwhal!</a>
+                    <a class="navbar-brand" href="{{ url_for('home') }}">Event Narwhal!</a>
                 </div>
                 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -35,14 +35,14 @@
                         <!-- this is how we signify which tab you're on <li class="active"><a href="#">Login <span class="sr-only">(current)</span></a></li> -->
                         <!-- still not quite sure what span class="sr-only" is doing -->
                         
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">My Events</a></li>
-                        <li><a href="#">Other Events</a></li>
+                        <li><a href="{{ url_for('home') }}">Home</a></li>
+                        <li><a href="{{ url_for('login') }}">My Events</a></li>
+                        <li><a href="{{ url_for('login') }}">Other Events</a></li>
                    </ul>
                    
                    <!-- login link, aligned right -->
                    <ul class="nav navbar-nav navbar-right">
-                       <li><a href="#">Login</a></li>
+                       <li><a href="{{ url_for('login') }}">Login</a></li>
                    </ul>
                    
                 </div><!-- /.navbar-collapse -->
