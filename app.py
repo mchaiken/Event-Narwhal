@@ -4,7 +4,7 @@ from pymongo import Connection
 import facebook
 
 #fb setup
-graph = facebook.GraphAPI(oauth_access_token)
+#graph = facebook.GraphAPI(oauth_access_token)
 
 #mongo setup
 conn = Connection()
@@ -28,7 +28,7 @@ def login():
 
 @app.route("/register", methods = ["GET", "POST"])
 def register():
-    return render_template("login.html")
+    return render_template("register.html")
 
 #logout button on other pages will redirect to this
 @app.route("/logout")
