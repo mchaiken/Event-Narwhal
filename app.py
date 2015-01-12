@@ -8,7 +8,7 @@ graph = facebook.GraphAPI(oauth_access_token)
 
 #mongo setup
 conn = Connection()
-db = conn["even_narwhal"]
+db = conn["event_narwhal"]
 
 
 #flask setup
