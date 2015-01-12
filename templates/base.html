@@ -3,11 +3,11 @@
     <head>
         
         <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/bootstrap.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/jumbotron-narrow.css') }}">
-            
-        <title>Event Narwhal!</title>
-            
-    </head>
+            <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/jumbotron-narrow.css') }}">
+                
+                <title>Event Narwhal!</title>
+                
+                </head>
     
     <body>
         
@@ -28,23 +28,28 @@
                 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                   
-                   <!-- standard navbar links, aligned left -->
-                   <ul class="nav navbar-nav">
+                    
+                    <!-- standard navbar links, aligned left -->
+                    <ul class="nav navbar-nav">
                         
                         <!-- this is how we signify which tab you're on <li class="active"><a href="#">Login <span class="sr-only">(current)</span></a></li> -->
                         <!-- still not quite sure what span class="sr-only" is doing -->
                         
-                        <li><a href="{{ url_for('home') }}">Home</a></li>
-                        <li><a href="{{ url_for('login') }}">My Events</a></li>
-                        <li><a href="{{ url_for('login') }}">Other Events</a></li>
-                   </ul>
-                   
-                   <!-- login link, aligned right -->
-                   <ul class="nav navbar-nav navbar-right">
-                       <li><a href="{{ url_for('login') }}">Login</a></li>
-                   </ul>
-                   
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Events<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <!-- for loop code here -->
+                            </ul>
+                        </li>
+                        <li><a href="{{ url_for('#') }}">New Event</a></li>
+                    </ul>
+                    
+                    <!-- login link, aligned right -->
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ url_for('#') }}">Settings</a></li>
+                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    </ul>
+                    
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
