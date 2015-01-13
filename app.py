@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session,
 from pymongo import Connection
+import database_actions
 #pip install facebook-sdk
 import facebook
 
@@ -19,16 +20,23 @@ def validated(user_id):
 
 
 @app.route("/", methods = ["GET", "POST"])
+@app.route("/home", methods = ["GET", "POST"])
 def home():
-    return render_template("home.html")
-@app.route("/login", methods = ["GET", "POST"])
-def login():
-    return render_template("login.html")
+    if 'user' not in session:
+        return render_template("home.html")
+    return render_template("myevents.html", events=database_actions.get_events(session['user']))
 
+@app.route("/new"):
+    if 'user' not in session:
+        return redirect('/')
+    if request_method == "POST":
+        database_actions.add_event(name=request.form["name"]) #this isn't done, but just a placeholder
+    return render_template('newevent.html',facebook_events=["event1","event2"])
 
-@app.route("/register", methods = ["GET", "POST"])
-def register():
-    return render_template("register.html")
+@app.route("/events/<event_index>"):
+    if 'user' not in session:
+        redirect("/")
+    return render_template("event.html",event=database_actions.get_event(session["user"],event_index))
 
 #logout button on other pages will redirect to this
 @app.route("/logout")
