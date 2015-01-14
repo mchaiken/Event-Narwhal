@@ -1,8 +1,6 @@
-{% entends base.html %}
+{% extends "base.html" %}
 
 {% block bodycontent %}
-
-<!-- will need to for loop here so all events have their own panel -->
 
 <div class="container">
     
@@ -23,14 +21,14 @@
                         Yummly stuff will go here?
                         
                     </center>
-                </div>
+                </div> <!-- /panel-body -->
                 
-            </div>
+            </div> <!-- /panel -->
 
-        </div>
+        </div> <!-- /col -->
         
         <!-- 8tracks -->
-        <div class="col-md-6 col-md-offset-6">
+        <div class="col-md-offset-6">
             
             <div class="panel panel-default">
                 
@@ -55,14 +53,14 @@
                          -->
                         
                     </center>
-                </div>
+                </div> <!-- /panel-body -->
                 
-            </div>
+            </div> <!-- /panel -->
             
-        </div>
+        </div> <!-- /col -->
         
-    </div>
+    </div> <!-- /row -->
     
-</div>
+</div> <!-- /container -->
 
 {% endblock bodycontent %}
