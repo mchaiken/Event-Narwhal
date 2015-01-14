@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session,
+from flask import Flask, render_template, request, redirect, url_for, session
 from pymongo import Connection
 import database_actions
 #pip install facebook-sdk
@@ -26,14 +26,16 @@ def home():
         return render_template("home.html")
     return render_template("myevents.html", events=database_actions.get_events(session['user']))
 
-@app.route("/new"):
+@app.route("/new")
+def new_event():
     if 'user' not in session:
         return redirect('/')
     if request_method == "POST":
         database_actions.add_event(name=request.form["name"]) #this isn't done, but just a placeholder
     return render_template('newevent.html',facebook_events=["event1","event2"])
 
-@app.route("/events/<event_index>"):
+@app.route("/events/<event_index>")
+def event(event_index):
     if 'user' not in session:
         redirect("/")
     return render_template("event.html",event=database_actions.get_event(session["user"],event_index))

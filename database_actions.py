@@ -45,7 +45,7 @@ def get_attending(id,index):
                   
                   
 #Testing
-
+'''
 
 print add_event(123456789,"party2","halloween","pizza","10/31/15","my house","http://STUFF",["abby","sophia"],["nadia"],["jenny"],not_responded=["benedict"])
 events= get_events(123456789)
@@ -53,5 +53,5 @@ for event in events:
     print event
     print "\n\n"
 
-
 #print get_attending(123456789,0);
+'''
