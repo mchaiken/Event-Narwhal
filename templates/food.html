@@ -1,0 +1,23 @@
+{%extends "base.html"%}
+{% block bodycontext %}
+
+
+<div class= "jumbotron container">
+	<center>
+	  <h1> Find Recipes for your Party </h1>
+	  <h2>
+
+	    <div class= "form-group has-error" style="margin: 20px">
+	      <form action="/results" method="GET">
+		<label class= "control-label">Find Recipes:</label> 
+		<input class= "form-control" type="text" name="search" placeholder="Enter either the ingrediants, cuisine, or holiday you are looking for">
+		<br>
+		<button type="submit" name= "submit" class= "btn btn-lg btn-danger">Search</button>
+		<div>
+	  </h2>
+	  
+	</center>
+	</div>
+	
+
+{%endblock bodycontext %}
