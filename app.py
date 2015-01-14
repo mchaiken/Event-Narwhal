@@ -24,6 +24,19 @@ def logout():
     session.pop('user',None)
     return render_template("logout.html")
 
+@app.route("/foodresults", method=["GET","POST"])
+def foodresults():
+    if request.method=="GET":
+        attribute= request.args.get("mymenu")
+        search = request.args.get("search")
+            if attribute== "ingredients":   
+                search= search.split(",")
+    #how do I seperate the request method from the drop down from the search bar?
+        results=yummly.getResults(attribute,search)
+    return render_temple("foodresults.html", attribute=attribute, results= results)    
+
+
+
 
 if __name__ == "__main__":
     app.debug = True

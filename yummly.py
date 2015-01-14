@@ -13,14 +13,17 @@ Christmas, Summer, Thanksgiving, New Year, Super Bowl / Game Day, Halloween, Han
 
 
 
-def getResults(attribute):
+def getResults(attribute, search):
+    #attribute= if it is a holiday, cusine, or ingredient
+    #search= their actual input
+    #need to take into account if their search is not a real holiday
     if attribute == "holiday":
-        url ="http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e&q=&allowedHoliday[]=holiday^holiday-"+ attribute.lower()
+        url ="http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e&q=&allowedHoliday[]=holiday^holiday-"+ search.lower()
     if attribute == "cuisine":
-        url ="http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e&q=&allowedCusine[]=cuisine^cuisine-"+ attribute.lower()
+        url ="http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e&q=&allowedCusine[]=cuisine^cuisine-"+ search.lower()
     if attribute == "ingredient":
          url=""" http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e"""
-         for ingredient in attribute:
+         for ingredient in search:
              if ingredient[0]==" ":
                  ingredient= ingredient[1:]
                  url+="&allowedIngredient[]="+ingredient.lower()
