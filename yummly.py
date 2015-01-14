@@ -25,7 +25,7 @@ def getResults(id):
     #print url
     return json.loads(result)
 
-
+m,mn,n 
 
 def getRecipe(id):
     url="http://api.yummly.com/v1/api/recipe/"+id+"?_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e"
