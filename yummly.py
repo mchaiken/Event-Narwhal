@@ -10,12 +10,17 @@ Christmas, Summer, Thanksgiving, New Year, Super Bowl / Game Day, Halloween, Han
 '''
 
 
-def getResults(id):
+
+
+
+def getResults(attribute):
     if attribute == "holiday":
-        url ="http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e&q=&allowedHoliday[]=holiday^holiday-"+ id.lower()
-    if attribute == "ingrediant":
+        url ="http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e&q=&allowedHoliday[]=holiday^holiday-"+ attribute.lower()
+    if attribute == "cuisine":
+        url ="http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e&q=&allowedCusine[]=cuisine^cuisine-"+ attribute.lower()
+    if attribute == "ingredient":
          url=""" http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e"""
-         for ingredient in ingredients:
+         for ingredient in attribute:
              if ingredient[0]==" ":
                  ingredient= ingredient[1:]
                  url+="&allowedIngredient[]="+ingredient.lower()
