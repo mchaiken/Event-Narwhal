@@ -6,6 +6,7 @@
 	<center>
 	  <h1> Find Recipes for your Party </h1>
 	  <h2>
+	    First Select what type of recipes you are searching for
 	    <form action="/results" method ="GET">
 	      <select name="mymenu">
 		<option value="cusine"> Cusine </option>
