@@ -24,8 +24,8 @@ def login_user(fb_id):
     return db.users.find_one({"_id":fb_id})
 
 #create a new event
-def add_event(id,name,theme,food_selection,date,location, facebook_link, attending,declined, maybe, not_responded):
-    db.users.update({"_id":id},{"$addToSet":{"events":{ "name":name,"theme":theme,"food-selection":food_selection,"date":date,"location":location,"facebook-link":facebook_link,"attending":attending, "declined":declined,"maybe":maybe, "not-responded":not_responded}}})
+def add_event(id,name,description,theme,food_selection,date,location, facebook_link, attending,declined, maybe, not_responded):
+    db.users.update({"_id":id},{"$addToSet":{"events":{ "name":name,"description":description,"theme":theme,"food-selection":food_selection,"date":date,"location":location,"facebook-link":facebook_link,"attending":attending, "declined":declined,"maybe":maybe, "not-responded":not_responded}}})
     return True
 
 #get a user's events
@@ -46,8 +46,11 @@ def get_attending(id,index):
                   
 #Testing
 '''
+add_event(123456789,"Halloween Party","spooookkyyyy","kittens","pizza","10/31/15","my house","http://STUFF",["abby","sophia"],["nadia"],["jenny"],not_responded=["benedict"])
 
-print add_event(123456789,"party2","halloween","pizza","10/31/15","my house","http://STUFF",["abby","sophia"],["nadia"],["jenny"],not_responded=["benedict"])
+
+register_user("mchaiken",123456789);
+print add_event(123456789,"Birthday","A party for my bday gonna be lost a fun","kittens","pizza","10/31/15","my house","http://STUFF",["abby","sophia"],["nadia"],["jenny"],not_responded=["benedict"])
 events= get_events(123456789)
 for event in events:
     print event
