@@ -4,19 +4,27 @@
 
 <!-- will need to for loop here so all events have their own panel -->
 {% set i = 0 -%}
-{%for event in events %}
-<a href="/event/{{i}}"><div style="padding:10px" >
-<div class="panel panel-danger">
-    <div class="panel-heading">
-		
-        <h3 class="panel-title">{{event["name"]}}</h3>
-    </div>
-    <div class="panel-body">
-       <div style="color:black;">{{event["description"]}}</div>
-    </div>
-</div>
-</div></a>
+{% for event in events %}
+
+<a href="/event/{{i}}">
+    <div style="padding:10px">
+        
+        <div class="panel panel-danger">
+           
+           <div class="panel-heading">
+                <h3 class="panel-title">{{event["name"]}}</h3>
+            </div>
+           
+            <div class="panel-body">
+                <div style="color:black;">{{event["description"]}}</div>
+            </div> <!-- /panel-body -->
+        
+        </div> <!-- /panel -->
+        
+    </div> <!-- /padding -->
+</a>
+
 {% set i = i + 1 %}
-{%endfor %}
+{% endfor %}
 
 {% endblock bodycontent %}
