@@ -34,11 +34,11 @@ def new_event():
     #   database_actions.add_event(name=request.form["name"]) #this isn't done, but just a placeholder
     return render_template('new_event.html',facebook_events=["event1","event2"],events=database_actions.get_events(123456789))
 
-@app.route("/events/<event_index>")
+@app.route("/event/<event_index>")
 def event(event_index):
-    if 'user' not in session:
-        redirect("/")
-    return render_template("event.html",event=database_actions.get_event(session["user"],event_index),events=database_actions.get_events(123456789))
+    #if 'user' not in session:
+    #   redirect("/")
+    return render_template("event.html",event=database_actions.get_event(123456789,event_index),events=database_actions.get_events(123456789))
 
 #logout button on other pages will redirect to this
 @app.route("/logout")
@@ -52,4 +52,4 @@ def logout():
 if __name__ == "__main__":
     app.debug = True
     app.secret_key=open("secret_key.txt").read()
-    app.run()
+    app.run(host="0.0.0.0",port=1639)

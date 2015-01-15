@@ -35,7 +35,7 @@ def get_events(id):
 #get those attending a given event with the user's ID and the Index of the event
 def get_event(id,index):
     events=get_events(id)
-    return events[id]
+    return events[int(index.encode("utf8"))]
 
 #get those attending a given event with the user's ID and the Index of the event
 def get_attending(id,index):
