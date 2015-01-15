@@ -23,7 +23,7 @@ def validated(user_id):
 @app.route("/home", methods = ["GET", "POST"])
 def home():
     #if 'user' not in session:
-    #   return render_template("home.html")
+    #  return render_template("home.html")
     return render_template("my_events.html", events=database_actions.get_events(123456789))
 
 @app.route("/new")
@@ -47,6 +47,14 @@ def logout():
     #page will have button to return to login page
     session.pop('user',None)
     return render_template("logout.html")
+#logout button on other pages will redirect to this
+
+@app.route("/login")
+def login():
+    #this is temporary until we have fb working
+    #page will have button to return to login page
+    session['user']=123456789
+    redirect("/")
 
 
 if __name__ == "__main__":
