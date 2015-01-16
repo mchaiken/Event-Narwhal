@@ -1,0 +1,13 @@
+import facebook
+graph = facebook.GraphAPI(
+
+
+FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+    return console.log(response["authResponse"]["userID"]);
+}
+
+def getUserID(){
+    
+
+#handles response and returs the userID

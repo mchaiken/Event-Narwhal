@@ -84,11 +84,7 @@
   <!-- you have to run any FB.function() inside testAPI()--> 
   FB.getLoginStatus(function(response) {
   if (response.status === 'connected') {
-  console.log(response);
-  $.post('/ajax/warning_message/', {'active': "manny bob"}, function() { <!--doesnt work yet-->
-            return
-       });
-
+  console.log(response.authResponse.accessToken);
   }
   });
   }
