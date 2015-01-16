@@ -3,6 +3,9 @@ from pymongo import Connection
 import database_actions
 #pip install facebook-sdk
 import facebook
+import json
+#http://stackoverflow.com/questions/10693630/how-to-pass-a-boolean-from-javascript-to-python use this
+#for the js to python transfer
 
 #fb setup
 #graph = facebook.GraphAPI(oauth_access_token)
@@ -52,4 +55,4 @@ def logout():
 if __name__ == "__main__":
     app.debug = True
     app.secret_key=open("secret_key.txt").read()
-    app.run()
+    app.run(host="149.89.150.1")
