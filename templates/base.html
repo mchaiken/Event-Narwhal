@@ -40,10 +40,14 @@
                         <li class="dropdown">
                             <a href="{{ url_for('home') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Events<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <!-- for loop code here -->
+							   {% set i = 0 -%}
+							   {%for event in events %}
+							   <a href="/event/{{i}}"><li>{{event["name"]}}</li></a>
+							   {% set i = i+1 %}
+							   {%endfor%}
                             </ul>
                         </li>
-                        <li><a href="{{ url_for('home') }}">New Event</a></li>
+                        <li><a href="{{ url_for('new_event') }}">New Event</a></li>
                     </ul>
                     
                     <!-- login link, aligned right -->

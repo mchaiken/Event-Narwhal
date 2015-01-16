@@ -25,23 +25,23 @@ def validated(user_id):
 @app.route("/", methods = ["GET", "POST"])
 @app.route("/home", methods = ["GET", "POST"])
 def home():
-    if 'user' not in session:
-        return render_template("home.html")
-    return render_template("myevents.html", events=database_actions.get_events(session['user']))
+    #if 'user' not in session:
+    #  return render_template("home.html")
+    return render_template("my_events.html", events=database_actions.get_events(123456789))
 
 @app.route("/new")
 def new_event():
-    if 'user' not in session:
-        return redirect('/')
-    if request_method == "POST":
-        database_actions.add_event(name=request.form["name"]) #this isn't done, but just a placeholder
-    return render_template('newevent.html',facebook_events=["event1","event2"])
+    #if 'user' not in session:
+    #   return redirect('/')
+    #if request_method == "POST":
+    #   database_actions.add_event(name=request.form["name"]) #this isn't done, but just a placeholder
+    return render_template('new_event.html',facebook_events=["event1","event2"],events=database_actions.get_events(123456789))
 
-@app.route("/events/<event_index>")
+@app.route("/event/<event_index>")
 def event(event_index):
-    if 'user' not in session:
-        redirect("/")
-    return render_template("event.html",event=database_actions.get_event(session["user"],event_index))
+    #if 'user' not in session:
+    #   redirect("/")
+    return render_template("event.html",event=database_actions.get_event(123456789,event_index),events=database_actions.get_events(123456789))
 
 #logout button on other pages will redirect to this
 @app.route("/logout")
@@ -50,6 +50,14 @@ def logout():
     #page will have button to return to login page
     session.pop('user',None)
     return render_template("logout.html")
+#logout button on other pages will redirect to this
+
+@app.route("/login")
+def login():
+    #this is temporary until we have fb working
+    #page will have button to return to login page
+    session['user']=123456789
+    redirect("/")
 
 
 if __name__ == "__main__":

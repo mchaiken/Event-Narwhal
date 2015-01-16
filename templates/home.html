@@ -1,5 +1,6 @@
-{%extends "base.html" %}
+{% extends "base.html" %}
 {% block bodycontent %}
+
 <div id="fb-root"></div>
 <script>
   // This is called with the results from from FB.getLoginStatus().
@@ -79,16 +80,15 @@
   document.getElementById('status').innerHTML =
   'Thanks for logging in, ' + response.name + '!';
   });
+
+  <!-- you have to run any FB.function() inside testAPI()--> 
   FB.getLoginStatus(function(response) {
   if (response.status === 'connected') {
   console.log(response);
-  $.post('/ajax/warning_message/', {'active': "manny bob"}, function() {
+  $.post('/ajax/warning_message/', {'active': "manny bob"}, function() { <!--doesnt work yet-->
             return
        });
 
-  }
-  else {
-  FB.login();
   }
   });
   }

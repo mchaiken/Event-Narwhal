@@ -1,25 +1,29 @@
-{% entends base.html %}
+{% extends "base.html" %}
 
 {% block bodycontent %}
 
-<!-- will need to for loop here so all events have their own panel -->
+{% set i = 0 -%}
+{% for event in events %}
 
-<div class="panel panel-danger">
-    <div class="panel-heading">
-        <h3 class="panel-title">[ Event 1 Name ]</h3>
-    </div>
-    <div class="panel-body">
-        [ Event 1 Description ]
-    </div>
-</div>
+<a href="/event/{{i}}">
+    <div style="padding:10px">
+        
+        <div class="panel panel-danger">
+           
+           <div class="panel-heading">
+                <h3 class="panel-title">{{ event[ "name" ] }}</h3>
+            </div> <!-- /panel-heading -->
+           
+            <div class="panel-body">
+                <div style="color:black;">{{ event[ "description" ] }}</div>
+            </div> <!-- /panel-body -->
+        
+        </div> <!-- /panel -->
+        
+    </div> <!-- /padding -->
+</a>
 
-<div class="panel panel-danger">
-    <div class="panel-heading">
-        <h3 class="panel-title">[ Event 2 Name ]</h3>
-    </div>
-    <div class="panel-body">
-        [ Event 2 Description ]
-    </div>
-</div>
+{% set i = i + 1 %}
+{% endfor %}
 
 {% endblock bodycontent %}
