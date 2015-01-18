@@ -2,6 +2,12 @@
 {% block bodycontent %}
 
 <div id="fb-root"></div>
+
+<!--Jquery-->
+<script type=text/javascript src="{{
+  url_for('static', filename='jquery.js') }}"></script>
+
+<!--FB login-->
 <script>
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
@@ -93,6 +99,10 @@
 
   
 </script>
+
+
+
+
 
 
 <div class= "jumbotron container">
