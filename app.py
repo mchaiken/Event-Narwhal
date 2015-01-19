@@ -26,6 +26,8 @@ def validated(user_id):
 @app.route("/home", methods = ["GET", "POST"])
 def home():
     #if 'user' not in session:
+    ID = request.form["ID"];
+    print ID
     return render_template("home.html")
     #return render_template("my_events.html", events=database_actions.get_events(123456789))
 

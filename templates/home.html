@@ -101,6 +101,14 @@
     <!--this is what i need to pass to flask -->
     var ID = response.authResponse.accessToken;
     console.log(ID);
+    $.ajax({
+    url: "/home",
+    data: ID,
+    type :"POST",
+    success: function(response){console.log(response);};,
+    error: function(error){console.log(error);}
+    });
+    
     }
     });
     } 
