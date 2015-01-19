@@ -95,17 +95,8 @@
     'Thanks for logging in, ' + response.name + '!';
     });
 
-    <!-- you have to run any FB.function() inside testAPI()--> 
-    FB.getLoginStatus(function(response) {
-    if (response.status === 'connected') {
-    <!--this is what i need to pass to flask -->
-    var ID = response.authResponse.accessToken;
-    console.log(ID);
     
-    
-    }
-    });
-    } 
+    }; 
   </script>
 
 
