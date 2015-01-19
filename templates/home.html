@@ -4,8 +4,9 @@
 <div id="fb-root"></div>
 
 <!--Jquery-->
-<script type=text/javascript src="{{
-  url_for('static', filename='jquery.js') }}"></script>
+src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="{{
+  url_for('static', filename='jquery.js') }}">\x3C/script>')</script>
 
 <!-- sets global var to prefix to root of app (lets us know where app is-->
 <script type=text/javascript>
