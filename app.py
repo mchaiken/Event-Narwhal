@@ -9,6 +9,11 @@ import json
 
 #fb setup
 #graph = facebook.GraphAPI(oauth_access_token)
+FBAppID = "1003039823056323"
+FBAppSecret = "15fb5524a4926a2be5e881177c135584"
+FBAccessToken = ""
+
+
 
 #mongo setup
 conn = Connection()
@@ -26,8 +31,8 @@ def validated(user_id):
 @app.route("/home", methods = ["GET", "POST"])
 def home():
     #if 'user' not in session:
-    ID = request.form["ID"];
-    print ID
+    cookie = facebook.get_user_from_cookie(request.cookies, FBAppID, FBAppSecret)
+    FBAccessToken = cookie["access_token"]
     return render_template("home.html")
     #return render_template("my_events.html", events=database_actions.get_events(123456789))
 
