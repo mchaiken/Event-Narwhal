@@ -99,18 +99,11 @@
     FB.getLoginStatus(function(response) {
     if (response.status === 'connected') {
     <!--this is what i need to pass to flask -->
-    console.log(response.authResponse.accessToken);
-
-    $.post('../app.py', {'ID': response.authResponse.accessToken}, function() {
-    return
-    });
+    var ID = response.authResponse.accessToken;
+    console.log(ID);
     }
     });
-    }
-    
-
-
-    
+    } 
   </script>
 
 
