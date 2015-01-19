@@ -4,17 +4,19 @@ import database_actions
 #pip install facebook-sdk
 import facebook
 import json
-#http://stackoverflow.com/questions/10693630/how-to-pass-a-boolean-from-javascript-to-python use this
-#for the js to python transfer
+
 
 #fb setup
-#graph = facebook.GraphAPI(oauth_access_token)
 FBAppID = "1003039823056323"
 FBAppSecret = "15fb5524a4926a2be5e881177c135584"
 FBAccessToken = ""
+#http://stackoverflow.com/questions/10693630/how-to-pass-a-boolean-from-javascript-to-python use this
+#for the js to python transfer
+graph = facebook.GraphAPI(FBAccessToken)
+def getEvents():
+        return graph.get_connections(id = "me", connection_name = "events")
 
-
-
+   
 #mongo setup
 conn = Connection()
 db = conn["event_narwhal"]
@@ -32,7 +34,9 @@ def validated(user_id):
 def home():
     #if 'user' not in session:
     cookie = facebook.get_user_from_cookie(request.cookies, FBAppID, FBAppSecret)
-    FBAccessToken = cookie["access_token"]
+    if cookie != None:
+        FBAccessToken = cookie["access_token"]
+        print getEvents()
     return render_template("home.html")
     #return render_template("my_events.html", events=database_actions.get_events(123456789))
 
