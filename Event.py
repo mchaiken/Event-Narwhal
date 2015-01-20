@@ -7,19 +7,15 @@
 import facebook
 
 #fb setup
-graph = facebook.GraphAPI(oauth_access_token)
+graph = facebook.GraphAPI("oauth_access_token")
+#unsure what to do here because the access token changes with every login
 
-events = graph.get_connections(id = "me", connection_name = "events")
 
-'''/* make the API call */
-FB.api(
-    "/{event-id}",   #event id would go here
-    function (response) {
-      if (response && !response.error) {
-        /* handle the result */
-      }
-    }
-);
-'''
+#returns a dict of all events
+def getEvents():
+        return graph.get_connections(id = "me", connection_name = "events")
+        
+
+
 
 

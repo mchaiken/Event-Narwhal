@@ -3,10 +3,20 @@ from pymongo import Connection
 import database_actions
 #pip install facebook-sdk
 import facebook
+import json
+
 
 #fb setup
-#graph = facebook.GraphAPI(oauth_access_token)
+FBAppID = "1003039823056323"
+FBAppSecret = "15fb5524a4926a2be5e881177c135584"
+FBAccessToken = ""
+#http://stackoverflow.com/questions/10693630/how-to-pass-a-boolean-from-javascript-to-python use this
+#for the js to python transfer
+graph = facebook.GraphAPI(FBAccessToken)
+def getEvents():
+        return graph.get_connections(id = "me", connection_name = "events")
 
+   
 #mongo setup
 conn = Connection()
 db = conn["event_narwhal"]
@@ -22,9 +32,20 @@ def validated(user_id):
 @app.route("/", methods = ["GET", "POST"])
 @app.route("/home", methods = ["GET", "POST"])
 def home():
+<<<<<<< HEAD
     if 'user' not in session:
       return render_template("home.html")
     return render_template("my_events.html", events=database_actions.get_events(session["user"]))
+=======
+    #if 'user' not in session:
+    cookie = facebook.get_user_from_cookie(request.cookies, FBAppID, FBAppSecret)
+    #print cookie["access_token"]
+    if cookie != None:
+        FBAccessToken = cookie["access_token"]
+        #print getEvents()
+    return render_template("home.html")
+    #return render_template("my_events.html", events=database_actions.get_events(123456789))
+>>>>>>> master
 
 @app.route("/new")
 def new_event():
@@ -60,4 +81,4 @@ def login():
 if __name__ == "__main__":
     app.debug = True
     app.secret_key=open("secret_key.txt").read()
-    app.run(host="0.0.0.0",port=1639)
+    app.run(host="149.89.150.1")
