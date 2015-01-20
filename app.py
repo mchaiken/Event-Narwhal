@@ -32,11 +32,6 @@ def validated(user_id):
 @app.route("/", methods = ["GET", "POST"])
 @app.route("/home", methods = ["GET", "POST"])
 def home():
-<<<<<<< HEAD
-    if 'user' not in session:
-      return render_template("home.html")
-    return render_template("my_events.html", events=database_actions.get_events(session["user"]))
-=======
     #if 'user' not in session:
     cookie = facebook.get_user_from_cookie(request.cookies, FBAppID, FBAppSecret)
     #print cookie["access_token"]
@@ -45,7 +40,7 @@ def home():
         #print getEvents()
     return render_template("home.html")
     #return render_template("my_events.html", events=database_actions.get_events(123456789))
->>>>>>> master
+
 
 @app.route("/new")
 def new_event():
