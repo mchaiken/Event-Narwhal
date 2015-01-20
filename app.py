@@ -33,11 +33,9 @@ def validated(user_id):
 @app.route("/home", methods = ["GET", "POST"])
 def home():
     #if 'user' not in session:
-    cookie = facebook.get_user_from_cookie(request.cookies, FBAppID, FBAppSecret)
+
     #print cookie["access_token"]
-    if cookie != None:
-        FBAccessToken = cookie["access_token"]
-        #print getEvents()
+           #print getEvents()
     return render_template("home.html")
     #return render_template("my_events.html", events=database_actions.get_events(123456789))
 
@@ -68,6 +66,11 @@ def logout():
 def login():
     #this is temporary until we have fb working
     #page will have button to return to login page
+  
+    cookie = facebook.get_user_from_cookie(request.cookies, FBAppID, FBAppSecret);
+    if cookie == None:
+        redurect)"/");
+    FBAccessToken = cookie["access_token"]
     session['user']=123456789
     return redirect("/")
 
