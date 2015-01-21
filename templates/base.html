@@ -47,12 +47,12 @@
 							   {%endfor%}
                             </ul>
                         </li>
+                        <!-- gotta have this generate a new event -->
                         <li><a href="{{ url_for('new_event') }}">New Event</a></li>
                     </ul>
                     
                     <!-- login link, aligned right -->
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{{ url_for('home') }}">Settings</a></li>
                         <li><a href="{{ url_for('logout') }}">Logout</a></li>
                     </ul>
                     
