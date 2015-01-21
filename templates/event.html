@@ -94,6 +94,32 @@
         
     </div> <!-- /row -->
     
+    <!-- edit/delete buttons -->
+    
+    <div class="row">
+        
+        <div class="col-md-6">
+            
+            <a href="{{ url_for('settings') }}">
+                <button class="btn btn-info btn-lg">
+                    Edit Event
+                </button>
+            </a>
+            
+        </div> <!-- /col -->
+        
+        <div class="col-md-offset-6">
+            
+            <a href="#">
+                <button class="btn btn-danger btn-lg">
+                    Delete Event
+                </button>
+            </a>
+            
+        </div> <!-- /col -->
+        
+    </div> <!-- /row -->
+    
 </div> <!-- /container -->
 
 {% endblock bodycontent %}
