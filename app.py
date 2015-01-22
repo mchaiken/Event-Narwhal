@@ -39,7 +39,8 @@ def home():
                 if cookie != None:
                     global FBAccessToken
                     FBAccessToken = cookie["access_token"]
-                    session["user"]= fb.getID(FBAccessToken);
+                    session["user"]= FB.getID(FBAccessToken);
+                    redirect("/");
                 return render_template("home.html")
         return render_template("my_events.html", events=database_actions.get_events(123456789))
 
@@ -50,7 +51,7 @@ def new_event():
                 return redirect('/')
         #if request_method == "POST":
         #   database_actions.add_event(name=request.form["name"]) #this isn't done, but just a placeholder
-        return render_template('settings.html',facebook_events=fb.getEvents(FBAccessToken),events=database_actions.get_events(session["user"]))
+        return render_template('settings.html',facebook_events=FB.getEvents(FBAccessToken),events=database_actions.get_events(session["user"]))
 
 @app.route("/event/<event_index>")
 def event(event_index):
