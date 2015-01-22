@@ -39,7 +39,7 @@ def home():
                 if cookie != None:
                     global FBAccessToken
                     FBAccessToken = cookie["access_token"]
-                    session["user"]= fb.getID(FBAccessToken);
+                    session["user"]= FB.getID(FBAccessToken);
                 return render_template("home.html")
         return render_template("my_events.html", events=database_actions.get_events(123456789))
 
@@ -61,6 +61,7 @@ def event(event_index):
 #logout button on other pages will redirect to this
 @app.route("/logout")
 def logout():
+        print FB.getAllEvents(FBAccessToken)["data"]
         #log user out
         #page will have button to return to login page
         session.pop('user',None)
