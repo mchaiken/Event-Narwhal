@@ -89,7 +89,7 @@
                         <form>
                             <div class="form-group">
                                 
-                                <input type="text" class="form-control" id="yumkeys" placeholder="Christmas, french, cookies..."/>
+                                <input type="text" class="form-control" id="yumquery" placeholder="Christmas, french, cookies..."/>
                                 <br/>
                                 <button type="submit" class="btn btn-warning">Search</button>
                                 
@@ -120,12 +120,29 @@
                         <form>
                             <div class="form-group">
                                 
-                                <input type="text" class="form-control" id="8keys" placeholder="Punk rock, manatees, rain..."/>
+                                <input type="text" class="form-control" id="8query" placeholder="Punk rock, manatees, rain..."/>
                                 <br/>
                                 <button type="submit" class="btn btn-primary">Search</button>
                                 
                             </div> <!-- /form-group -->
                         </form>
+                        
+                        <!-- Miranda's code
+                         
+                         <form id="8tracks_form" method="GET" action="/8tracks_search">
+                         <button type="submit" name="next" class="btn btn-primary">Next Mix!</button>
+                         </form>
+                         <script>
+                         var formelements = document.getElementById("8tracks_form");
+                         formelements.setAttribute("action","/8tracks");
+                         formelements.setAttribute("target","8tracks");
+                         exportwindow = window.open("/8tracks?param='param'", "bugsme", "width=800,height=600,resizable=yes");
+                         
+                         formelements.submit();
+                         </script>
+                         <a href="http://127.0.0.1:5000/"><button class="btn btn-primary">Return To Search</button></a>
+                         
+                         end of Miranda's code-->
                         
                     </center>
                 </div> <!-- /panel-body -->
