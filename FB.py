@@ -8,3 +8,8 @@ def getEvents(token):
 def getID(token):
         graph = Graph(token)
         return graph.get_object("me")["id"]
+
+
+#to make:
+#getGuests  
+#optional: getAttending   getNotAttending   getMaybe   getUnknown 
