@@ -14,8 +14,7 @@ FBAccessToken = "TBD"
 #http://stackoverflow.com/questions/10693630/how-to-pass-a-boolean-from-javascript-to-python use this
 #for the js to python transfer
 graph = facebook.GraphAPI(FBAccessToken)
-def getEvents():
-        return graph.get_connections(id = "me", connection_name = "events")
+
 
 
    
