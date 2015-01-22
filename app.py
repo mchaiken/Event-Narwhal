@@ -14,8 +14,7 @@ FBAccessToken = "TBD"
 #http://stackoverflow.com/questions/10693630/how-to-pass-a-boolean-from-javascript-to-python use this
 #for the js to python transfer
 graph = facebook.GraphAPI(FBAccessToken)
-def getEvents():
-        return graph.get_connections(id = "me", connection_name = "events")
+
 
 
    
@@ -40,6 +39,10 @@ def home():
                     global FBAccessToken
                     FBAccessToken = cookie["access_token"]
                     session["user"]= FB.getID(FBAccessToken);
+<<<<<<< HEAD
+=======
+                    redirect("/");
+>>>>>>> 32c691e021822ce8fe62be807e522b6b58908d18
                 return render_template("home.html")
         return render_template("my_events.html", events=database_actions.get_events(123456789))
 
@@ -50,7 +53,7 @@ def new_event():
                 return redirect('/')
         #if request_method == "POST":
         #   database_actions.add_event(name=request.form["name"]) #this isn't done, but just a placeholder
-        return render_template('settings.html',facebook_events=fb.getEvents(FBAccessToken),events=database_actions.get_events(session["user"]))
+        return render_template('settings.html',facebook_events=FB.getEvents(FBAccessToken),events=database_actions.get_events(session["user"]))
 
 @app.route("/event/<event_index>")
 def event(event_index):
