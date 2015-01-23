@@ -36,8 +36,8 @@ def home():
                 cookie = facebook.get_user_from_cookie(request.cookies, FBAppID, FBAppSecret)
                 print cookie
                 if cookie != None:
-                    global FBAccessToken
-                    FBAccessToken = cookie["access_token"]
+                    global FBAccessToken  #THIS IS STILL NOT SETTING THE TOKEN VAR TO THE ACTUAL TOKEN
+                    FBAccessToken = cookie["access_token"] #IT DOESNT WORK OUTSIDE HOME()
                     session["user"]= FB.getID(FBAccessToken);
                     redirect("/");
                 return render_template("home.html")
@@ -61,7 +61,7 @@ def event(event_index):
 #logout button on other pages will redirect to this
 @app.route("/logout")
 def logout():
-        print FB.getAllEvents(FBAccessToken)["data"]
+        print FBAccessToken
         #log user out
         #page will have button to return to login page
         session.pop('user',None)
