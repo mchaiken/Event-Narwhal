@@ -4,8 +4,8 @@ def Graph(token):
 
 def getAllEvents(token):
         graph = Graph(token)
-        user = graph.get_object("me")
-        return graph.get_connections(user["id"], "events")
+       # user = graph.get_object("me")
+        return graph.get_connections("me", "friends")
 
 def getEvent(token, ID):
         graph = Graph(token)

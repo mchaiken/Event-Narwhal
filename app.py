@@ -59,7 +59,7 @@ def event(event_index):
 #logout button on other pages will redirect to this
 @app.route("/logout")
 def logout():
-        print session["token"]
+        print FB.getID(session["token"])
         #log user out
         #page will have button to return to login page
         session.pop('user',None)
