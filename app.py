@@ -39,10 +39,7 @@ def home():
                     global FBAccessToken
                     FBAccessToken = cookie["access_token"]
                     session["user"]= FB.getID(FBAccessToken);
-<<<<<<< HEAD
-=======
                     redirect("/");
->>>>>>> 32c691e021822ce8fe62be807e522b6b58908d18
                 return render_template("home.html")
         return render_template("my_events.html", events=database_actions.get_events(123456789))
 
