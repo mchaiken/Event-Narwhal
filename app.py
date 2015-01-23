@@ -10,10 +10,9 @@ import FB
 #fb setup
 FBAppID = "1556299804628530"
 FBAppSecret = "caf5c0f2cd36a15c61949d9991170d0d"
-FBAccessToken = "TBD"
 #http://stackoverflow.com/questions/10693630/how-to-pass-a-boolean-from-javascript-to-python use this
 #for the js to python transfer
-graph = facebook.GraphAPI(FBAccessToken)
+
 
 
 
@@ -36,10 +35,9 @@ def home():
                 cookie = facebook.get_user_from_cookie(request.cookies, FBAppID, FBAppSecret)
                 print cookie
                 if cookie != None:
-                    global FBAccessToken  #THIS IS STILL NOT SETTING THE TOKEN VAR TO THE ACTUAL TOKEN
-                    FBAccessToken = cookie["access_token"] #IT DOESNT WORK OUTSIDE HOME()
-                    session["user"]= FB.getID(FBAccessToken);
-                    redirect("/");
+                        session["token"]= cookie["access_token"]
+                        session["user"]= FB.getID(session["token"]);
+                        redirect("/");
                 return render_template("home.html")
         return render_template("my_events.html", events=database_actions.get_events(123456789))
 
@@ -50,7 +48,7 @@ def new_event():
                 return redirect('/')
         #if request_method == "POST":
         #   database_actions.add_event(name=request.form["name"]) #this isn't done, but just a placeholder
-        return render_template('settings.html',facebook_events=FB.getEvents(FBAccessToken),events=database_actions.get_events(session["user"]))
+        return render_template('settings.html',facebook_events=FB.getEvents(session["token"]),events=database_actions.get_events(session["user"]))
 
 @app.route("/event/<event_index>")
 def event(event_index):
@@ -61,7 +59,7 @@ def event(event_index):
 #logout button on other pages will redirect to this
 @app.route("/logout")
 def logout():
-        print FBAccessToken
+        print session["token"]
         #log user out
         #page will have button to return to login page
         session.pop('user',None)
