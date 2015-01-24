@@ -64,7 +64,7 @@ def event( event_index ):
 @app.route( "/logout" )
 def logout():
 
-#        print FB.getEvent(session["token"], "760519097373077")
+        print FB.getAllEvents(session["token"])
 
 
         #log user out
