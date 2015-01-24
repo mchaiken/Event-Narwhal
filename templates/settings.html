@@ -19,13 +19,13 @@
                 
                 <div class="panel-body">
                     <center>
-                        
+                        <select name="fb_event">
                        {% for event in facebook_events %}
-					   		<div style=".hover{color: blue;}">
-								{{event["name"]}}
+					   		
+								<option value ="{{event[id]}}">{{event["name"]}}<option>
 							</div>
-							<br>
 						{%endfor%}
+					</select>
                         
                     </center>
                 </div> <!-- /panel-body -->
