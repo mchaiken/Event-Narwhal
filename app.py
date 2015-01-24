@@ -23,58 +23,66 @@ db = conn["event_narwhal"]
 
 
 #flask setup
-app = Flask(__name__)
+app = Flask( __name__ )
 
-def validated(user_id):
-        sessions[user]= db.users.find("user_id:"+user_id)
-        
-@app.route("/", methods = ["GET", "POST"])
-@app.route("/home", methods = ["GET", "POST"])
+
+def validated( user_id ):
+        sessions[user] = db.users.find( "user_id:" + user_id )
+
+
+@app.route( "/", methods = ["GET", "POST"] )
+@app.route( "/home", methods = ["GET", "POST"] )
 def home():
         if 'user' not in session:
-                cookie = facebook.get_user_from_cookie(request.cookies, FBAppID, FBAppSecret)
+                cookie = facebook.get_user_from_cookie( request.cookies, FBAppID, FBAppSecret )
                 print cookie
                 if cookie != None:
-                        session["token"]= cookie["access_token"]
-                        session["user"]= FB.getID(session["token"]);
-                        redirect("/");
-                return render_template("home.html")
-        return render_template("my_events.html", events=database_actions.get_events(123456789))
+                        session["token"] = cookie["access_token"]
+                        session["user"] = FB.getID( session["token"] );
+                        redirect( "/" );
+                return render_template( "home.html" )
+        return render_template( "my_events.html", events=database_actions.get_events(123456789) )
 
 
-@app.route("/new")
+@app.route( "/new" )
 def new_event():
         if 'user' not in session:
                 return redirect('/')
         #if request_method == "POST":
         #   database_actions.add_event(name=request.form["name"]) #this isn't done, but just a placeholder
-        return render_template('settings.html',facebook_events=FB.getEvents(session["token"]),events=database_actions.get_events(session["user"]))
+        return render_template( 'settings.html', facebook_events=FB.getEvents( session["token"] ), events=database_actions.get_events( session["user"] ) )
 
-@app.route("/event/<event_index>")
-def event(event_index):
+
+@app.route( "/event/<event_index>" )
+def event( event_index ):
         if 'user' not in session:
-                return redirect("/")
-        return render_template("event.html",event=database_actions.get_event(session["user"],event_index),events=database_actions.get_events(123456789))
+                return redirect( "/" )
+        return render_template( "event.html", event=database_actions.get_event(session["user"], event_index), events=database_actions.get_events(123456789) )
+
 
 #logout button on other pages will redirect to this
-@app.route("/logout")
+@app.route( "/logout" )
 def logout():
-        print FB.getEvent(session["token"], "760519097373077")
+
+#        print FB.getEvent(session["token"], "760519097373077")
+
+
         #log user out
         #page will have button to return to login page
-        session.pop('user',None)
-        return render_template("logout.html")
+        session.pop( 'user', None )
+        return render_template( "logout.html" )
 #logout button on other pages will redirect to this
 
-@app.route("/login")
+
+@app.route( "/login" )
 def login():
         #this is temporary until we have fb working
         #page will have button to return to login page
-        session['user']=123456789
-        return redirect("/")
+        session['user'] = 123456789
+        return redirect( "/" )
 
 
 if __name__ == "__main__":
         app.debug = True
-        app.secret_key=open("secret_key.txt").read()
-        app.run(host="149.89.150.1")
+        app.secret_key = open( "secret_key.txt" ).read()
+        app.run( host="149.89.150.1" )
