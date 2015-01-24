@@ -50,13 +50,13 @@ def home():
         return render_template( "my_events.html", events=database_actions.get_events(session["user"]) )
 
 
-@app.route( "/new" )
-@app.route( "/home", methods = ["GET", "POST"] )
+
+@app.route( "/new", methods = ["GET", "POST"] )
 def new_event():
         if 'user' not in session:
                 return redirect('/')
         if request_method == "POST":
-           database_actions.add_event(id=session["user"],name=request.form["name"],theme=request.form["theme"]) #this isn't done, but just a placeholder
+           database_actions.add_event(session["user"],request.form["name"],request.form["theme"]) #this isn't done, but just a placeholder
         return render_template( 'settings.html', facebook_events=FB.getAllEvents( session["token"] ), events=database_actions.get_events( session["user"] ) )
 
 
