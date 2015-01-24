@@ -71,7 +71,7 @@ def event( event_index ):
 def logout():
 
 #        print FB.getGuests(session["token"], getAllEvents(session["token"])[0])
-        print FB.getAllEvents(session["token"])
+        print FB.getGuests(session["token"], "760519097373077")
 
         #log user out
         #page will have button to return to login page
