@@ -88,6 +88,15 @@ def login():
         #session['user'] = 123456789
         return redirect( "/" )
 
+@app.route( "/8tracks", methods = ["GET", "POST"] )
+def new_event():
+    if 'user' not in session:
+        return redirect('/')
+            #if request.method == "POST":
+            #database_actions.add_event(session["user"],request.form["name"],request.form["theme"]) #this isn't done, but just a placeholder
+        return render_template( '8tracks.html')
+
+
 
 if __name__ == "__main__":
         app.debug = True
