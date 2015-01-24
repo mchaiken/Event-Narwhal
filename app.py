@@ -39,9 +39,9 @@ def home():
                 if cookie != None:
                         session["token"] = cookie["access_token"]
                         session["user"] = FB.getID( session["token"] );
-                        redirect( "/" );
+                        return redirect( "/" );
                 return render_template( "home.html" )
-        return render_template( "my_events.html", events=database_actions.get_events(123456789) )
+        return render_template( "my_events.html", events=database_actions.get_events(session["user"]) )
 
 
 @app.route( "/new" )
@@ -57,7 +57,7 @@ def new_event():
 def event( event_index ):
         if 'user' not in session:
                 return redirect( "/" )
-        return render_template( "event.html", event=database_actions.get_event(session["user"], event_index), events=database_actions.get_events(123456789) )
+        return render_template( "event.html", event=database_actions.get_event(session["user"], event_index), events=database_actions.get_events(session["user"]) )
 
 
 #logout button on other pages will redirect to this
