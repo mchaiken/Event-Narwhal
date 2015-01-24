@@ -21,7 +21,10 @@
                     <center>
                         
                        {% for event in facebook_events %}
-					   		<a href"/">{{event["name"]}}</a><br>
+					   		<div style=".hover{color: blue;}">
+								{{event["name"]}}
+							</div>
+							<br>
 						{%endfor%}
                         
                     </center>
