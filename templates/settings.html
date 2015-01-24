@@ -3,7 +3,10 @@
 {% block bodycontent %}
 
 <div class="container">
-    <form method = "POST">
+  <form method = "POST">
+    <center>
+    <input type="text" class="form-control input-lg"/placeholder="Event Name"> <br/>
+</center>
     <div class="row">
         <!-- pull event from facebook -->
         <div class="col-md-6">
@@ -15,7 +18,7 @@
                         <h3 class="panel-title">Pull event from Facebook</h3>
                     </center>
                 </div> <!-- /panel-heading -->
-                
+
                 <div class="panel-body">
                     <center>
                         <select  class= "form-control input-lg"name="fb_event">
@@ -23,7 +26,7 @@
 			  <option value ="{{event[id]}}">{{event["name"]}}</option>
 			{%endfor%}
 			</select>
-                        
+
                     </center>
                 </div> <!-- /panel-body -->
                 
@@ -51,14 +54,9 @@
                 <div class="panel-body">
                     <center>
                         
-                            <div class="form-group">
-                                
-                                <input type="text" class="form-control" id="theme" placeholder="Birthday, baby shower, club initiation..."/>
-                                <br/>
-                                <button type="submit" class="btn btn-warning">Enter</button>
-                                
+                            <div class="form-group">    
+                              <input type="text" class="form-control" id="theme" placeholder="Birthday, baby shower, club initiation..."/>
                             </div> <!-- /form-group -->
-						
                         
                     </center>
                 </div> <!-- /panel-body -->
@@ -90,9 +88,8 @@
                         
                             <div class="form-group">
                                 
-                                <input type="text" class="form-control" id="yumquery" placeholder="Christmas, french, cookies..."/>
-                                <br/>
-                                <button type="submit" class="btn btn-warning">Search</button>
+                              
+                                <button type="submit" class="btn btn-warning">Pick a recipe off yummly</button>
                                 
                             </div> <!-- /form-group -->
                         
@@ -113,15 +110,11 @@
                         <h3 class="panel-title">8tracks</h3>
                     </center>
                 </div> <!-- /panel-heading -->
-                
                 <div class="panel-body">
                     <center>
                             <div class="form-group">
-                                
-                                <input type="text" class="form-control" id="8query" placeholder="Punk rock, manatees, rain..."/>
                                 <br/>
-                                <button type="submit" class="btn btn-primary">Search</button>
-                                
+                                <button type="submit" class="btn btn-primary">Search for a Mix on 8tracks</button>
                             </div> <!-- /form-group -->
 						
                         
@@ -150,8 +143,10 @@
         </div> <!-- /col -->
         
     </div> <!-- /row -->
-	<button type ="submit">Update Event</button>
-</form>
+    <center>
+<button type= "submit" class= "btn btn-warning">Update Event!</button>
+</center>
+    </form>
 </div> <!-- /container -->
 
 {% endblock bodycontent %}
