@@ -40,7 +40,7 @@ def home():
                         session["token"] = cookie["access_token"]
                         session["user"] = FB.getID( session["token"] )
                         session["name"] =FB.getName(session["token"])
-                        if (database_actions.isRegistered()):
+                        if database_actions.isRegistered(session["user"]):
                             database_actions.login_user(session["user"])
                         else:
                             database_actions.register_user(sessions["name"],session["user"])
