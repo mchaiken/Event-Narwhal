@@ -89,12 +89,12 @@ def login():
         return redirect( "/" )
 
 @app.route( "/8tracks", methods = ["GET", "POST"] )
-def new_event():
+def eighttracks():
     if 'user' not in session:
         return redirect('/')
             #if request.method == "POST":
             #database_actions.add_event(session["user"],request.form["name"],request.form["theme"]) #this isn't done, but just a placeholder
-        return render_template( 'search.html')
+    return render_template( 'search.html')
 
 
 
