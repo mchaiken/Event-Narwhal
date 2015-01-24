@@ -43,9 +43,9 @@ def home():
                         if database_actions.isRegistered(session["user"]):
                             database_actions.login_user(session["user"])
                         else:
-                            database_actions.register_user(sessions["name"],session["user"])
+                            database_actions.register_user(session["name"],session["user"])
 
-                        return redirect( "/" )
+                        #return redirect( "/" )
                 return render_template( "home.html" )
         return render_template( "my_events.html", events=database_actions.get_events(session["user"]) )
 
