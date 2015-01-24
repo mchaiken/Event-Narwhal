@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 
 {% block bodycontent %}
-
+		<script>
+		function popup(url) {
+		    var myWindow = window.open(url, "Search 8traks", "width=500, height=500");
+		}
+		</script>
 <div class="container">
   <form method = "POST">
     <center>
@@ -31,15 +35,10 @@
                 </div> <!-- /panel-body -->
                 
             </div> <!-- /panel -->
-            
         </div> <!-- /col -->
         
         <!-- enter theme -->
-		<script>
-		function popup(url) {
-		    var myWindow = window.open(url, "Options", "width=500, height=500");
-		}
-		</script>
+
 		
         <div class="col-md-offset-6">
             
@@ -55,7 +54,9 @@
                     <center>
                         
                             <div class="form-group">    
+
                               <input name="theme"type="text" class="form-control" id="theme" placeholder="Birthday, baby shower, club initiation..."/>
+
                             </div> <!-- /form-group -->
                         
                     </center>
@@ -83,14 +84,9 @@
                 </div> <!-- /panel-heading -->
                 
                 <div class="panel-body">
-                    <center>
-                        
-                        
+                    <center>   
                             <div class="form-group">
-                                
-                              
-                                <button type="submit" class="btn btn-warning">Pick a recipe off yummly</button>
-                                
+                                <input type="button" onclick="popup('google.com');"class="btn btn-warning">Pick a recipe off yummly</button>
                             </div> <!-- /form-group -->
                         
                     </center>
