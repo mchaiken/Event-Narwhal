@@ -38,8 +38,14 @@ def home():
                 print cookie
                 if cookie != None:
                         session["token"] = cookie["access_token"]
-                        session["user"] = FB.getID( session["token"] );
-                        return redirect( "/" );
+                        session["user"] = FB.getID( session["token"] )
+                        session["name"] =FB.getName(session["token"])
+                        if (database_actions.isRegistered()):
+                            database_actions.login_user(session["user"])
+                        else:
+                            database_actions.register_user(sessions["name"],session["user"])
+
+                        return redirect( "/" )
                 return render_template( "home.html" )
         return render_template( "my_events.html", events=database_actions.get_events(session["user"]) )
 
