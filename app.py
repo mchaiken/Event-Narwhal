@@ -38,10 +38,16 @@ def home():
                 print cookie
                 if cookie != None:
                         session["token"] = cookie["access_token"]
-                        session["user"] = FB.getID( session["token"] );
-                        redirect( "/" );
+                        session["user"] = FB.getID( session["token"] )
+                        session["name"] =FB.getName(session["token"])
+                        if (database_actions.isRegistered()):
+                            database_actions.login_user(session["user"])
+                        else:
+                            database_actions.register_user(sessions["name"],session["user"])
+
+                        return redirect( "/" )
                 return render_template( "home.html" )
-        return render_template( "my_events.html", events=database_actions.get_events(123456789) )
+        return render_template( "my_events.html", events=database_actions.get_events(session["user"]) )
 
 
 @app.route( "/new" )
@@ -57,7 +63,7 @@ def new_event():
 def event( event_index ):
         if 'user' not in session:
                 return redirect( "/" )
-        return render_template( "event.html", event=database_actions.get_event(session["user"], event_index), events=database_actions.get_events(123456789) )
+        return render_template( "event.html", event=database_actions.get_event(session["user"], event_index), events=database_actions.get_events(session["user"]) )
 
 
 #logout button on other pages will redirect to this
@@ -78,11 +84,12 @@ def logout():
 def login():
         #this is temporary until we have fb working
         #page will have button to return to login page
-        session['user'] = 123456789
+        #session['user'] = 123456789
         return redirect( "/" )
 
 
 if __name__ == "__main__":
         app.debug = True
         app.secret_key = open( "secret_key.txt" ).read()
-        app.run( host="149.89.150.1" )
+#app.run( host="149.89.150.1" )
+        app.run()
