@@ -55,7 +55,7 @@ def home():
 def new_event():
         if 'user' not in session:
                 return redirect('/')
-        if request_method == "POST":
+        if request.method == "POST":
            database_actions.add_event(session["user"],request.form["name"],request.form["theme"]) #this isn't done, but just a placeholder
         return render_template( 'settings.html', facebook_events=FB.getAllEvents( session["token"] ), events=database_actions.get_events( session["user"] ) )
 
