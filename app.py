@@ -91,5 +91,5 @@ def login():
 if __name__ == "__main__":
         app.debug = True
         app.secret_key = open( "secret_key.txt" ).read()
-#app.run( host="149.89.150.1" )
-        app.run()
+        app.run( host="149.89.150.1" )
+#        app.run()

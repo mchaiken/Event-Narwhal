@@ -4,14 +4,14 @@ def Graph(token):
 
 def getAllEvents(token):
         graph = Graph(token)
-        return graph.request("760519097373077")
+        return graph.get_connections("760519097373077")
 
 def getEvent(token, ID):
         graph = Graph(token)
         return graph.get_object(ID)
 
 def getName(token):
-        graph - Graph(token)
+        graph = Graph(token)
         return graph.get_object("me")["name"]
 
 def getID(token):
