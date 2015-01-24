@@ -19,8 +19,13 @@
                 
                 <div class="panel-body">
                     <center>
-                        
-                        facebook events will go here? pick one somehow
+                        <select multiple class= "form-control"name="fb_event">
+                       {% for event in facebook_events %}
+					   		
+								<option value ="{{event[id]}}">{{event["name"]}}<option>
+							</div>
+						{%endfor%}
+					</select>
                         
                     </center>
                 </div> <!-- /panel-body -->
