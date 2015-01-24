@@ -31,7 +31,23 @@ def getID(token):
 def getGuests(token, EventID):
         graph = Graph(token)
         return graph.get_connections(EventID, "invited")["data"]
-        
+
+def getAttending(token, EventID):
+        graph = Graph(token)
+        return graph.get_connections(EventID, "attending")["data"]
+
+def getDeclined(token, EventID):
+        graph = Graph(token)
+        return graph.get_connections(EventID, "declined")["data"]
+
+def getMaybe(token, EventID):
+        graph = Graph(token)
+        return graph.get_connections(EventID, "maybe")["data"]
+
+def getUnknown(token, EventID):
+        graph = Graph(token)
+        return graph.get_connections(EventID, "noreply")["data"]
+
 #to make:
 #getGuests  
 #optional: getAttending   getNotAttending   getMaybe   getUnknown 
