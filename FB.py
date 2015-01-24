@@ -4,7 +4,7 @@ def Graph(token):
 
 def getAllEvents(token):
         graph = Graph(token)
-        return graph.get_connections("760519097373077")
+        return graph.get_connections("me", "events")
 
 def getEvent(token, ID):
         graph = Graph(token)
