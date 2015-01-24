@@ -11,7 +11,7 @@ def register_user(user_name,fb_id):
 
 #True if user has registered through fb, False otherwise
 def isRegistered(fb_id):
-    result = db.users.find({"_id":fb_id})
+    results = db.users.find({"_id":fb_id})
     i=0
     for result in results:
         i+=1
