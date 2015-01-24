@@ -19,7 +19,7 @@
                 
                 <div class="panel-body">
                     <center>
-                        <select name="fb_event">
+                        <select multiple class= "form-control"name="fb_event">
                        {% for event in facebook_events %}
 					   		
 								<option value ="{{event[id]}}">{{event["name"]}}<option>
