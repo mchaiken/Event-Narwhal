@@ -3,7 +3,7 @@
 {% block bodycontent %}
 
 <div class="container">
-    
+    <form method = "POST">
     <div class="row">
         <!-- pull event from facebook -->
         <div class="col-md-6">
@@ -20,7 +20,7 @@
                     <center>
                         <select  class= "form-control input-lg"name="fb_event">
 			  {% for event in facebook_events %}
-			  <option value ="{{event[id]}}">{{event["name"]}}<option>
+			  <option value ="{{event[id]}}">{{event["name"]}}</option>
 			{%endfor%}
 			</select>
                         
@@ -51,15 +51,14 @@
                 <div class="panel-body">
                     <center>
                         
-                        <form>
-                            <div class="form-group" action=>
+                            <div class="form-group">
                                 
                                 <input type="text" class="form-control" id="theme" placeholder="Birthday, baby shower, club initiation..."/>
                                 <br/>
                                 <button type="submit" class="btn btn-warning">Enter</button>
                                 
                             </div> <!-- /form-group -->
-                        </form>
+						
                         
                     </center>
                 </div> <!-- /panel-body -->
@@ -88,7 +87,7 @@
                 <div class="panel-body">
                     <center>
                         
-                        <form>
+                        
                             <div class="form-group">
                                 
                                 <input type="text" class="form-control" id="yumquery" placeholder="Christmas, french, cookies..."/>
@@ -96,7 +95,6 @@
                                 <button type="submit" class="btn btn-warning">Search</button>
                                 
                             </div> <!-- /form-group -->
-                        </form>
                         
                     </center>
                 </div> <!-- /panel-body -->
@@ -118,8 +116,6 @@
                 
                 <div class="panel-body">
                     <center>
-                        
-                        <form>
                             <div class="form-group">
                                 
                                 <input type="text" class="form-control" id="8query" placeholder="Punk rock, manatees, rain..."/>
@@ -127,7 +123,7 @@
                                 <button type="submit" class="btn btn-primary">Search</button>
                                 
                             </div> <!-- /form-group -->
-                        </form>
+						
                         
                         <!-- Miranda's code
                          
@@ -154,7 +150,8 @@
         </div> <!-- /col -->
         
     </div> <!-- /row -->
-    
+	<button type ="submit">Update Event</button>
+</form>
 </div> <!-- /container -->
 
 {% endblock bodycontent %}
