@@ -10,7 +10,10 @@ def getAllEvents(token):
 def getEvent(token, ID):
         graph = Graph(token)
         return graph.get_object(ID)
-        
+
+def getName(token):
+        graph - Graph(token)
+        return graph.get_object("me")["name"]
 
 def getID(token):
         graph = Graph(token)
