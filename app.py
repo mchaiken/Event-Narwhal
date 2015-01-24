@@ -84,11 +84,12 @@ def logout():
 def login():
         #this is temporary until we have fb working
         #page will have button to return to login page
-        session['user'] = 123456789
+        #session['user'] = 123456789
         return redirect( "/" )
 
 
 if __name__ == "__main__":
         app.debug = True
         app.secret_key = open( "secret_key.txt" ).read()
-        app.run( host="149.89.150.1" )
+#app.run( host="149.89.150.1" )
+        app.run()
