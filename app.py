@@ -70,8 +70,8 @@ def event( event_index ):
 @app.route( "/logout" )
 def logout():
 
+#        print FB.getGuests(session["token"], getAllEvents(session["token"])[0])
         print FB.getAllEvents(session["token"])
-
 
         #log user out
         #page will have button to return to login page
