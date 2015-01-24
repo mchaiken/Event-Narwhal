@@ -6,6 +6,16 @@ def getAllEvents(token):
         graph = Graph(token)
         return graph.get_connections("me", "events")["data"]
 
+def getHostedEvents(token):
+        graph = Graph(token)
+        events = getAllEvents(token)
+        hosted = []
+        for x in events:
+                event = getEvent(token, x["id"])
+                if event["owner"]["id"] == getID(token):
+                        hosted.append(event)
+        return hosted
+
 def getEvent(token, ID):
         graph = Graph(token)
         return graph.get_object(ID)
