@@ -94,7 +94,7 @@ def new_event():
         return redirect('/')
             #if request.method == "POST":
             #database_actions.add_event(session["user"],request.form["name"],request.form["theme"]) #this isn't done, but just a placeholder
-        return render_template( '8tracks.html')
+        return render_template( 'search.html')
 
 
 
