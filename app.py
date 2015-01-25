@@ -63,7 +63,7 @@ def set():
         return redirect('/')
     #elif request.method == "POST":
         #database_actions.add_event(session["user"],request.form["name"],request.form["theme"]) #this isn't done, but just a placeholder
-    return render_template( 'settings.html', facebook_events=FB.getAllEvents( session["token"] ), events=database_actions.get_events( session["user"] ) )
+    return render_template( 'set.html', facebook_events=FB.getAllEvents( session["token"] ), events=database_actions.get_events( session["user"] ) )
 
 
 @app.route( "/event/<event_index>" )
