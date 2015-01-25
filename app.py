@@ -65,11 +65,15 @@ def new_event():
                 return redirect("/")
 
 def set():
-    if 'user' not in session:
-        return redirect('/')
-    #elif request.method == "POST":
+        try:
+                if 'user' not in session:
+                        return redirect('/')
+                return render_template( 'set.html', facebook_events=FB.getAllEvents( session["token"] ), events=database_actions.get_events( session["user"] ) )
+                #elif request.method == "POST":
         #database_actions.add_event(session["user"],request.form["name"],request.form["theme"]) #this isn't done, but just a placeholder
-    return render_template( 'set.html', facebook_events=FB.getAllEvents( session["token"] ), events=database_actions.get_events( session["user"] ) )
+        except:
+                session.pop("user")
+                return redirect("/")
 
 
 
