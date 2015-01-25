@@ -42,8 +42,8 @@ def home():
                         session["name"] =FB.getName(session["token"])
                         if database_actions.isRegistered(session["user"]):
                                 database_actions.login_user(session["user"])
-else:
-        database_actions.register_user(session["name"],session["user"])
+                        else:
+                                database_actions.register_user(session["name"],session["user"])
 
                         #return redirect( "/" )
                         return render_template( "home.html" )
@@ -63,7 +63,7 @@ def new_event():
         except:
                 session.pop("user")
                 return redirect("/")
-
+@app.route( "/set", methods = ["GET", "POST"] )
 def set():
     if 'user' not in session:
         return redirect('/')
@@ -120,7 +120,7 @@ def eighttracks():
 def yummly():
     if 'user' not in session:
         return redirect('/')
-    return render_template( 'search.html',placeholder="Search 8tracks for music...")
+    return render_template( 'search.html',placeholder="Search yummly for recipies...")
 
 
 
