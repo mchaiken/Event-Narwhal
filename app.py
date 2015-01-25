@@ -42,12 +42,12 @@ def home():
                         session["name"] =FB.getName(session["token"])
                         if database_actions.isRegistered(session["user"]):
                                 database_actions.login_user(session["user"])
-else:
-        database_actions.register_user(session["name"],session["user"])
+                        else:
+                                database_actions.register_user(session["name"],session["user"])
 
                         #return redirect( "/" )
-                        return render_template( "home.html" )
-                return render_template( "my_events.html", events=database_actions.get_events(session["user"]) )
+                return render_template( "home.html" )
+        return render_template( "my_events.html", events=database_actions.get_events(session["user"]) )
 
 
 
@@ -57,23 +57,25 @@ def new_event():
         try:
                 if 'user' not in session:
                         return redirect('/')
-                if request.method == "POST":
-                        database_actions.add_event(session["user"],request.form["name"],request.form["theme"]) #this isn't done, but just a placeholder
-                return render_template( 'settings.html', facebook_events=FB.getAllEvents( session["token"] ), events=database_actions.get_events( session["user"] ) )
+                return render_template( 'create.html', facebook_events=FB.getAllEvents( session["token"] ), events=database_actions.get_events( session["user"] ) )
         except:
                 session.pop("user")
                 return redirect("/")
 
+
+
+@app.route( "/set", methods = ["GET", "POST"] )
 def set():
-        try:
+        #try:
                 if 'user' not in session:
                         return redirect('/')
-                return render_template( 'set.html', facebook_events=FB.getAllEvents( session["token"] ), events=database_actions.get_events( session["user"] ) )
-                #elif request.method == "POST":
-        #database_actions.add_event(session["user"],request.form["name"],request.form["theme"]) #this isn't done, but just a placeholder
-        except:
-                session.pop("user")
-                return redirect("/")
+                elif request.method == "POST":
+                    print database_actions.add_event(session["user"],request.form["name"],request.form["theme"],request.form["fb_id"]) #this isn't done, but just a placeholder
+                    return render_template( 'set.html', events=database_actions.get_events( session["user"] ) )
+                return redirect("/new")
+        #except:
+         #       session.pop("user")
+          #      return redirect("/")
 
 
 
@@ -124,7 +126,7 @@ def eighttracks():
 def yummly():
     if 'user' not in session:
         return redirect('/')
-    return render_template( 'search.html',placeholder="Search 8tracks for music...")
+    return render_template( 'search.html',placeholder="Search yummly for recipies...")
 
 
 
