@@ -70,4 +70,40 @@
 {% endfor %}
 {% endif %}
 
+
+{% if playlists != None %}
+{% for playlist in playlists %}
+
+<div class="media container">
+    
+    <h6><a href="/8tracks/{{ playlist['id'] }}">{{ playlist["recipeName"] }}</a></h6>
+    <div class="row container">
+        
+        {% if "smallImageUrls" in result.keys() %}
+        
+        <div class="col-md-1">
+            <img src="{{ result["smallImageUrls"][0] }}"/>
+        </div> <!-- /col -->
+        
+        {% else %}
+        
+        <div class="col-md-1">
+            <img src="http://lorempixel.com/90/65/animals/sorry"/>
+        </div> <!-- /col -->
+        
+        {% endif %}
+        
+        <div class="col-md-8">
+            <strong>Source:</strong> {{result["sourceDisplayName"]}}<br>
+            <strong>Rating:</strong> {{result["rating"]}}<br>
+            <strong>Ingredients:</strong> {{", ".join(result["ingredients"])}}
+        </div> <!-- /col -->
+        
+    </div> <!-- /row -->
+    
+</div> <!-- /media -->
+
+{% endfor %}
+{% endif %}
+
 {%endblock bodycontent %}
