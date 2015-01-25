@@ -92,8 +92,21 @@ def set():
                 if 'user' not in session:
                         return redirect('/')
                 elif request.method == "POST":
-                    print database_actions.add_event(session["user"],request.form["name"],request.form["theme"],request.form["fb_id"]) #this isn't done, but just a placeholder
+
+
                     session["event_in_progress"]= len(database_actions.get_events(session["user"]))- 1
+
+                    ID = request.form["fb_id"]
+                    token = session["token"]
+                    description = FB.getDescription(token, ID)
+                    date = FB.getStartTime(token, ID)
+                    location = FB.getLocation(token, ID)
+                    attending = FB.getAttending(token, ID)
+                    maybe =  FB.getMaybe(token, ID)
+                    declined = FB.getDeclined(token, ID)
+                    not_responded = FB.getUnknown(token, ID)
+                    print database_actions.add_event(session["user"],request.form["name"],request.form["theme"],ID, description, date, location, attending, declined, maybe, not_responded) #this isn't done, but just a placeholder
+
                     return render_template( 'set.html', events=database_actions.get_events( session["user"] ) )
                 return redirect("/new")
         except:

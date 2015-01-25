@@ -55,6 +55,7 @@ def getLocation(token, EventID): #may return None if no location has been set
                 return graph.get_object(EventID)["location"]
         except:
                 return None
+
         
 def getStartTime(token, EventID): #may return None if no start time has been set
         graph = Graph(token)
