@@ -3,6 +3,39 @@
 {% block bodycontent %}
 
 <form class= "inline-form">
-	<input type = "text" class = "form-control input-lg" placeholder = "{{placeholder}}" /><button type="submit"class= "btn btn-warning">Search</button>
+	<input type = "text" class = "form-control input-lg" placeholder = "{{placeholder}}" name="query"/>
+	{% if placeholder == "Search yummly for recipies..." %}
+	<select name="type">
+		<option value="ingredients">Search by...</option>
+		<option value="ingredients">Ingredients</option>
+		<option value="cuisine"/>Cuisine</option>
+		<option value="holiday">Holiday</option>
+	</select>
+	{%endif%}
+		<button type="submit"class= "btn btn-warning">Search</button>
 </form>
+	{% if results != None %}
+	    {% for result in results %}
+	        <div class="media container">
+            
+	            <h3><a href="/recipe/{{result['id']}}">{{result["recipeName"]}}</a></h3>
+	            <div class="row container">
+					{% if "smallImageUrls" in result.keys() %}
+	                <div class="col-md-1"> <img src="{{result["smallImageUrls"][0]}}"> </div>
+					{%else %}
+					 <div class="col-md-1"> <img src="http://lorempixel.com/90/65/animals/sorry"> </div>
+					{% endif %}
+				
+	            <div class="col-md-8">
+	                <strong>Source:</strong> {{result["sourceDisplayName"]}}<br>
+	                <strong>Rating:</strong> {{result["rating"]}}<br>
+	                <strong>Ingredients:</strong> {{", ".join(result["ingredients"])}}</div>
+            
+	            </div>
+                
+	        </div>
+	    <br>
+	    {% endfor %}
+	{%endif %}
+		
 {%endblock bodycontent %}

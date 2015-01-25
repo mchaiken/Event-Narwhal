@@ -128,7 +128,11 @@ def eighttracks():
 def yummly():
     if 'user' not in session:
         return redirect('/')
-    return render_template( 'search.html',placeholder="Search yummly for recipies...")
+    if request.args.get("search") != None:
+        results= yummly.getResults(request.args.get("search"),request.args.get("type"))
+    else:
+        results = None
+    return render_template( 'search.html',resultsplaceholder="Search yummly for recipies...",results=results)
 
 
 
