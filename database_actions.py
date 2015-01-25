@@ -74,7 +74,7 @@ def get_recipes(id, ename):
 
 
 #Testing
-'''
+'
 add_event(123456789,"Halloween Party","spooookkyyyy","kittens","pizza","10/31/15","my house","http://STUFF",["abby","sophia"],["nadia"],["jenny"],not_responded=["benedict"])
 
 

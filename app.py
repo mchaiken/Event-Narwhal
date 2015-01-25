@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for, session, yummly
+from flask import Flask, render_template, request, redirect, url_for, session
 from pymongo import Connection
 import database_actions
 #pip install facebook-sdk
 import facebook
 import json
 import FB
+import yummly
 
 
 #fb setup
@@ -128,11 +129,11 @@ def eighttracks():
 def yummly():
     if 'user' not in session:
         return redirect('/')
-    if request.args.get("search") != None:
-        results= yummly.getResults(request.args.get("search"),request.args.get("type"))
+    if request.args.get("query") != None:
+        results= yummly.getResults(request.args.get("type"),request.args.get("query"))
     else:
         results = None
-    return render_template( 'search.html',resultsplaceholder="Search yummly for recipies...",results=results)
+    return render_template( 'search.html',placeholder="Search yummly for recipies...",results=results)
 
 
 
