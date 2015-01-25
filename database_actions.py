@@ -47,7 +47,7 @@ def get_event(id,index):
     events=get_events(id)
     return events[int(index.encode("utf8"))]
 
-def update_8tracks(id,index):
+#def update_8tracks(id,index):
 
 #get those attending a given event with the user's ID and the Index of the event
 def get_attending(id,index):
