@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block bodycontent %}
+
+		<script>
+		function popup(url) {
+		   var window= window.open(url, "Search 8traks", "width=500", "height=500");
+		    console.log("popup!");
+		}
+		</script>
+<div class= "container">
+    <div class="row">
+        
+        <!-- keyword(s?) for yummly -->
+        <div class="col-md-6">
+            
+            <div class="panel panel-warning">
+                
+                <div class="panel-heading">
+                    <center>
+                        <h3 class="panel-title">Yummly</h3>
+                    </center>
+                </div> <!-- /panel-heading -->
+                
+                <div class="panel-body">
+                    <center>   
+                            <div class="form-group">
+                                <input type="button" onclick="popup('yummly');"class="btn btn-warning" value= "Pick a Recipe off Yummly">
+                            </div> <!-- /form-group -->
+                        
+                    </center>
+                </div> <!-- /panel-body -->
+                
+            </div> <!-- /panel -->
+            
+        </div> <!-- /col -->
+        
+        <!-- keyword for 8tracks -->
+        <div class="col-md-offset-6">
+            
+            <div class="panel panel-primary">
+                
+                <div class="panel-heading">
+                    <center>
+                        <h3 class="panel-title">8tracks</h3>
+                    </center>
+                </div> <!-- /panel-heading -->
+                <div class="panel-body">
+                    <center>
+                            <div class="form-group">
+                                <br/>
+                                <button type="submit" onclick= "popup('8tracks')"class="btn btn-primary">Search for a Mix on 8tracks</button>
+                            </div> <!-- /form-group -->
+						
+                    </center>
+                </div> <!-- /panel-body -->
+                
+            </div> <!-- /panel -->
+            
+        </div> <!-- /col -->
+        
+    </div> <!-- /row -->
+</div> <!-- /container -->
+
+{% endblock bodycontent %}

@@ -54,6 +54,15 @@ def get_attending(id,index):
                   
                   
                   
+
+#not sure if this should be in the yummly section or not so I will comment it out
+'''
+def get_recipes(id, ename):
+    #how do you find the right event?
+    return db.users.find_one({"fbID":id}).get("events, name=ename, food-selections}
+
+'''
+
 #Testing
 '''
 add_event(123456789,"Halloween Party","spooookkyyyy","kittens","pizza","10/31/15","my house","http://STUFF",["abby","sophia"],["nadia"],["jenny"],not_responded=["benedict"])

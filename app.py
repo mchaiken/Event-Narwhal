@@ -53,6 +53,7 @@ else:
 
 @app.route( "/new", methods = ["GET", "POST"] )
 def new_event():
+
         try:
                 if 'user' not in session:
                         return redirect('/')
@@ -62,6 +63,15 @@ def new_event():
         except:
                 session.pop("user")
                 return redirect("/")
+
+def set():
+    if 'user' not in session:
+        return redirect('/')
+    #elif request.method == "POST":
+        #database_actions.add_event(session["user"],request.form["name"],request.form["theme"]) #this isn't done, but just a placeholder
+    return render_template( 'settings.html', facebook_events=FB.getAllEvents( session["token"] ), events=database_actions.get_events( session["user"] ) )
+
+>>>>>>> e73a88026161175fb98c61a8a57e5e5a363e1f57
 
 @app.route( "/event/<event_index>" )
 def event( event_index ):
@@ -79,6 +89,10 @@ def logout():
         #page will have button to return to login page
         session.pop( 'user', None )
         return render_template( "logout.html" )
+
+
+
+
 #logout button on other pages will redirect to this
 
 
@@ -88,6 +102,28 @@ def login():
         #page will have button to return to login page
         #session['user'] = 123456789
         return redirect( "/" )
+
+
+
+
+@app.route( "/8tracks", methods = ["GET", "POST"] )
+def eighttracks():
+    if 'user' not in session:
+        return redirect('/')
+    return render_template( 'search.html',placeholder="Search 8tracks for music...")
+
+
+
+
+
+@app.route( "/yummly", methods = ["GET", "POST"] )
+def yummly():
+    if 'user' not in session:
+        return redirect('/')
+    return render_template( 'search.html',placeholder="Search 8tracks for music...")
+
+
+
 
 
 if __name__ == "__main__":
