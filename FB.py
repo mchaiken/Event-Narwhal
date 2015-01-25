@@ -39,7 +39,7 @@ def getGuests(token, EventID):
 
 def getAttending(token, EventID):
         graph = Graph(token)
-        ppl = graph.get_connections(EventID, "attending")
+        ppl = graph.get_connections(EventID, "attending")["data"]
         fin = []
         for x in ppl:
                 fin.append(x["name"])
