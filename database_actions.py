@@ -24,10 +24,10 @@ def login_user(fb_id):
     return db.users.find_one({"_id":fb_id})
 
 #create a new event
-def add_event(id,name,theme):
-    db.users.update({"_id":id},{"$addToSet":{"events":{ "name":name,"theme":theme,}}})
+def add_event(id,name,theme,fb):
+    return db.users.update({"_id":id},{"$addToSet":{"events":{ "name":name,"theme":theme,"fb_id":fb}}})
     #db.users.update({"_id":id},{"$addToSet":{"events":{ "name":name,"description":description,"theme":theme,"food-selection":food_selection,"date":date,"location":location,"facebook-id":facebook_id,"attending":attending, "declined":declined,"maybe":maybe, "not-responded":not_responded}}})
-    return True
+
 
 def remove_event(id,index):
     events = get_events(id)
@@ -47,10 +47,12 @@ def get_event(id,index):
     events=get_events(id)
     return events[int(index.encode("utf8"))]
 
+def update_8tracks(id,index):
+
 #get those attending a given event with the user's ID and the Index of the event
 def get_attending(id,index):
     events=get_events(id)
-    return events[0]["attending"]
+    return events[int(index.encode("utf8"))]["attending"]
                   
                   
                   

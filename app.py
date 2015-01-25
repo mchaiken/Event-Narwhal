@@ -63,14 +63,18 @@ def new_event():
         except:
                 session.pop("user")
                 return redirect("/")
+
+
+
 @app.route( "/set", methods = ["GET", "POST"] )
 def set():
         try:
                 if 'user' not in session:
                         return redirect('/')
-                return render_template( 'set.html', facebook_events=FB.getAllEvents( session["token"] ), events=database_actions.get_events( session["user"] ) )
-                #elif request.method == "POST":
-        #database_actions.add_event(session["user"],request.form["name"],request.form["theme"]) #this isn't done, but just a placeholder
+                elif request.method == "POST":
+                    print database_actions.add_event(session["user"],request.form["name"],request.form["theme"]) #this isn't done, but just a placeholder
+                    return render_template( 'set.html', events=database_actions.get_events( session["user"] ) )
+                return redirect("/new")
         except:
                 session.pop("user")
                 return redirect("/")
