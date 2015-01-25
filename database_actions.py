@@ -34,7 +34,7 @@ def remove_event(id,index):
     events.pop(index)
     print "EVENTS:"
     print events
-    db.users.update({"_id":id},{"$set":{"events:":events}})
+    db.users.update({"_id":id},{"$set":{"events":events}})
     print db.users.find_one({"_id":id}).get("name")
     return True
 
@@ -47,7 +47,16 @@ def get_event(id,index):
     events=get_events(id)
     return events[int(index.encode("utf8"))]
 
-#def update_8tracks(id,index):
+def update_8tracks(id,index,link):
+    events=get_events(id)
+    events[index]["8tracks"]=link
+    db.users.update({"_id":id},{"$set":{"events":events}})
+
+def update_yummly(id,index,link):
+    events=get_events(id)
+    events[index]["food"]=link
+    db.users.update({"_id":id},{"$set":{"events":events}})
+
 
 #get those attending a given event with the user's ID and the Index of the event
 def get_attending(id,index):
@@ -61,9 +70,8 @@ def get_attending(id,index):
 '''
 def get_recipes(id, ename):
     #how do you find the right event?
-    return db.users.find_one({"fbID":id}).get("events, name=ename, food-selections}
+    return db.users.find_one({"_id":id}).get("events, name=ename, food-selections}
 
-'''
 
 #Testing
 '''

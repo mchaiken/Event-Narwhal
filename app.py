@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, yummly
 from pymongo import Connection
 import database_actions
 #pip install facebook-sdk
@@ -43,6 +43,7 @@ def home():
                         if database_actions.isRegistered(session["user"]):
                                 database_actions.login_user(session["user"])
                         else:
+                                print "registering "
                                 database_actions.register_user(session["name"],session["user"])
 
                         #return redirect( "/" )
@@ -66,16 +67,16 @@ def new_event():
 
 @app.route( "/set", methods = ["GET", "POST"] )
 def set():
-        #try:
+        try:
                 if 'user' not in session:
                         return redirect('/')
                 elif request.method == "POST":
                     print database_actions.add_event(session["user"],request.form["name"],request.form["theme"],request.form["fb_id"]) #this isn't done, but just a placeholder
                     return render_template( 'set.html', events=database_actions.get_events( session["user"] ) )
                 return redirect("/new")
-        #except:
-         #       session.pop("user")
-          #      return redirect("/")
+        except:
+                session.pop("user")
+                return redirect("/")
 
 
 
@@ -116,6 +117,7 @@ def login():
 def eighttracks():
     if 'user' not in session:
         return redirect('/')
+    
     return render_template( 'search.html',placeholder="Search 8tracks for music...")
 
 
