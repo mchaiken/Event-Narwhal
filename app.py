@@ -6,6 +6,26 @@ import facebook
 import json
 import FB
 import yummly
+import urllib2, json
+def getResults( attribute, search ):
+    #attribute = if it is a holiday, cusine, or ingredient
+    #search = their actual input
+    #need to take into account if their search is not a real holiday
+    url = ""
+    if attribute == "holiday":
+        url = "http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e&q=&allowedHoliday[]=holiday^holiday-" + search.lower()
+    elif attribute == "cuisine":
+        url = "http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e&q=&allowedCusine[]=cuisine^cuisine-" + search.lower()
+    else:
+        url = "http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e"
+            for ingredient in search:
+                if ingredient[0] == " ":
+                    ingredient = ingredient[1:]
+                        url += "&allowedIngredient[]=" + ingredient.lower()
+request = urllib2.urlopen( url )
+    result = request.read()
+    #print url
+    return json.loads( result )
 
 
 #fb setup
@@ -130,7 +150,7 @@ def yummly():
     if 'user' not in session:
         return redirect('/')
     if request.args.get("query") != None:
-        results= yummly.getResults(request.args.get("type"),request.args.get("query"))
+        results= getResults(request.args.get("type"),request.args.get("query"))
     else:
         results = None
     return render_template( 'search.html',placeholder="Search yummly for recipies...",results=results)
