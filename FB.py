@@ -77,14 +77,14 @@ def getEventName(token, EventID):
 def getDescription(token, EventID): #may return None if no description has been set
         graph = Graph(token)
         try:
-                return graph.get_object(EventID)["description"]
+                return graph.get_object(EventID)["description"] 
         except:
                 return None
 
 def getEventPhotos(token, EventID): #may return None if no EventPhotos exist
         graph = Graph(token)
         try:
-                return graph.get_connections(EventID, "photos")
+                return graph.get_connections(EventID, "photos") ["data"]
         except:
                 return None
 
@@ -92,7 +92,7 @@ def getEventPhotos(token, EventID): #may return None if no EventPhotos exist
 def getEventVideos(token, EventID): #may return None if no EventVideos exist
         graph = Graph(token)
         try:
-                return graph.get_connections(EventID, "videos")
+                return graph.get_connections(EventID, "videos") ["data"]
         except:
                 return None
 
@@ -101,7 +101,7 @@ def getEventVideos(token, EventID): #may return None if no EventVideos exist
 def getEventPicture(token, EventID): #may return None if no Event profile pic exists
         graph = Graph(token)
         try:
-                return graph.get_connections(EventID, "picture")
+                return graph.get_connections(EventID, "picture") ["data"]
         except:
                 return None
 
