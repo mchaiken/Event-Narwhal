@@ -18,11 +18,11 @@ def getResults( attribute, search ):
         url = "http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e&q=&allowedCusine[]=cuisine^cuisine-" + search.lower()
     else:
         url = "http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e"
-            for ingredient in search:
+        for ingredient in search:
                 if ingredient[0] == " ":
                     ingredient = ingredient[1:]
-                        url += "&allowedIngredient[]=" + ingredient.lower()
-request = urllib2.urlopen( url )
+                    url += "&allowedIngredient[]=" + ingredient.lower()
+    request = urllib2.urlopen( url )
     result = request.read()
     #print url
     return json.loads( result )
@@ -150,9 +150,10 @@ def yummly():
     if 'user' not in session:
         return redirect('/')
     if request.args.get("query") != None:
-        results= getResults(request.args.get("type"),request.args.get("query"))
+        results= getResults(request.args.get("type"),request.args.get("query"))["matches"]
     else:
         results = None
+    print results
     return render_template( 'search.html',placeholder="Search yummly for recipies...",results=results)
 
 
