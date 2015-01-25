@@ -81,30 +81,21 @@ def getDescription(token, EventID): #may return None if no description has been 
         except:
                 return None
 
-def getEventPhotos(token, EventID): #may return None if no EventPhotos exist
+def getEventPhotos(token, EventID): #may return an empty list if no EventPhotos exist
         graph = Graph(token)
-        try:
-                return graph.get_connections(EventID, "photos") ["data"]
-        except:
-                return None
+        return graph.get_connections(EventID, "photos") ["data"]
 
 
-def getEventVideos(token, EventID): #may return None if no EventVideos exist
+def getEventVideos(token, EventID): #may return an empty list if no EventVideos exist
         graph = Graph(token)
-        try:
-                return graph.get_connections(EventID, "videos") ["data"]
-        except:
-                return None
+        return graph.get_connections(EventID, "videos") ["data"]
+        
 
 
-
-def getEventPicture(token, EventID): #may return None if no Event profile pic exists
+def getEventPicture(token, EventID): #may return an empty list if no Event profile pic exists
         graph = Graph(token)
-        try:
-                return graph.get_connections(EventID, "picture") ["data"]
-        except:
-                return None
-
+        return graph.get_connections(EventID, "picture") ["data"]
+        
 
         
 
