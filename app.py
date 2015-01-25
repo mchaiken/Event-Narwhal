@@ -41,29 +41,36 @@ def home():
                         session["user"] = FB.getID( session["token"] )
                         session["name"] =FB.getName(session["token"])
                         if database_actions.isRegistered(session["user"]):
-                            database_actions.login_user(session["user"])
-                        else:
-                            database_actions.register_user(session["name"],session["user"])
+                                database_actions.login_user(session["user"])
+else:
+        database_actions.register_user(session["name"],session["user"])
 
                         #return redirect( "/" )
-                return render_template( "home.html" )
-        return render_template( "my_events.html", events=database_actions.get_events(session["user"]) )
+                        return render_template( "home.html" )
+                return render_template( "my_events.html", events=database_actions.get_events(session["user"]) )
 
 
 
 @app.route( "/new", methods = ["GET", "POST"] )
 def new_event():
-        if 'user' not in session:
-                return redirect('/')
-        return render_template( 'create.html', facebook_events=FB.getAllEvents( session["token"] ), events=database_actions.get_events( session["user"] ) )
 
-@app.route( "/set", methods = ["GET", "POST"] )
+        try:
+                if 'user' not in session:
+                        return redirect('/')
+                if request.method == "POST":
+                        database_actions.add_event(session["user"],request.form["name"],request.form["theme"]) #this isn't done, but just a placeholder
+                return render_template( 'settings.html', facebook_events=FB.getAllEvents( session["token"] ), events=database_actions.get_events( session["user"] ) )
+        except:
+                session.pop("user")
+                return redirect("/")
+
 def set():
     if 'user' not in session:
         return redirect('/')
     #elif request.method == "POST":
         #database_actions.add_event(session["user"],request.form["name"],request.form["theme"]) #this isn't done, but just a placeholder
     return render_template( 'set.html', facebook_events=FB.getAllEvents( session["token"] ), events=database_actions.get_events( session["user"] ) )
+
 
 
 @app.route( "/event/<event_index>" )
@@ -76,10 +83,8 @@ def event( event_index ):
 #logout button on other pages will redirect to this
 @app.route( "/logout" )
 def logout():
-
-#        print FB.getGuests(session["token"], getAllEvents(session["token"])[0])
-        print FB.getHostedEvents(session["token"])
-
+        cookie = facebook.get_user_from_cookie( request.cookies, FBAppID, FBAppSecret )
+        print cookie
         #log user out
         #page will have button to return to login page
         session.pop( 'user', None )
@@ -124,5 +129,5 @@ def yummly():
 if __name__ == "__main__":
         app.debug = True
         app.secret_key = open( "secret_key.txt" ).read()
-        app.run( host="149.89.150.1" )
-#        app.run()
+        app.run( host="149.89.150.1")
+        #        app.run()
