@@ -27,7 +27,7 @@
                     <center>
                         <select  class= "form-control input-lg"name="fb_id">
 			  {% for event in facebook_events %}
-			  <option value ="{{event[id]}}">{{event["name"]}}</option>
+			  <option value ="{{event['id']}}">{{event["name"]}}</option>
 			{%endfor%}
 			</select>
 

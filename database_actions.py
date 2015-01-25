@@ -25,7 +25,7 @@ def login_user(fb_id):
 
 #create a new event
 def add_event(id,name,theme,fb, description, date, location, attending, declined, maybe, not_responded):
-    return db.users.update({"_id":id},{"$addToSet":{"events":{ "name":name,"description":description,"theme":theme,"food-selection":food_selection,"date":date,"location":location,"facebook-id":facebook_id,"attending":attending, "declined":declined,"maybe":maybe, "not-responded":not_responded}}})
+    return db.users.update({"_id":id},{"$addToSet":{"events":{ "name":name,"description":description,"theme":theme,"date":date,"location":location,"facebook-id":fb,"attending":attending, "declined":declined,"maybe":maybe, "not-responded":not_responded}}})
 
 
 def remove_event(id,index):

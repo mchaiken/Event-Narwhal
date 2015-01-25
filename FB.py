@@ -35,7 +35,7 @@ def getGuests(token, EventID):
 
 def getAttending(token, EventID):
         graph = Graph(token)
-        return graph.get_connections(EventID, "attending")["data"]
+        return graph.get_connections(EventID, "attending")
 
 def getDeclined(token, EventID):
         graph = Graph(token)

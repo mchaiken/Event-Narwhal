@@ -79,7 +79,7 @@ def new_event():
         try:
                 if 'user' not in session:
                         return redirect('/')
-                return render_template( 'create.html', facebook_events=FB.getAllEvents( session["token"] ), events=database_actions.get_events( session["user"] ) )
+                return render_template( 'create.html', facebook_events=FB.getHostedEvents( session["token"] ), events=database_actions.get_events( session["user"] ) )
         except:
                 session.pop("user")
                 return redirect("/")
@@ -88,7 +88,7 @@ def new_event():
 
 @app.route( "/set", methods = ["GET", "POST"] )
 def set():
-        try:
+        #try:
                 if 'user' not in session:
                         return redirect('/')
                 elif request.method == "POST":
@@ -97,6 +97,7 @@ def set():
                     session["event_in_progress"]= len(database_actions.get_events(session["user"]))- 1
 
                     ID = request.form["fb_id"]
+                    print "asgsgsfgsagasfgasfgasfgasfgasgf    " + ID
                     token = session["token"]
                     description = FB.getDescription(token, ID)
                     date = FB.getStartTime(token, ID)
@@ -109,7 +110,7 @@ def set():
 
                     return render_template( 'set.html', events=database_actions.get_events( session["user"] ) )
                 return redirect("/new")
-        except:
+        #except:
                 session.pop("user")
                 return redirect("/")
 
