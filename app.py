@@ -47,7 +47,7 @@ def home():
 
                         #return redirect( "/" )
                         return render_template( "home.html" )
-                return render_template( "my_events.html", events=database_actions.get_events(session["user"]) )
+        return render_template( "my_events.html", events=database_actions.get_events(session["user"]) )
 
 
 
