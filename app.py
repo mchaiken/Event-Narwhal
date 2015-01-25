@@ -177,7 +177,7 @@ def eighttracks():
     if 'user' not in session:
         return redirect('/')
     
-    return render_template( 'search.html', message="Search 8tracks for music!" )
+    return render_template( 'search.html', message="Search 8tracks for music!", results=get8Tracks(request.args.get("query")))
 
 
 @app.route( "/yummly", methods = ["GET", "POST"] )
