@@ -7,6 +7,24 @@ import json
 import FB
 import yummly
 import urllib2, json
+
+def createJSON(url):
+    request = urllib2.urlopen(url+"&api_key=b72f8beba38aa9fb230d52bf6f45e2baf9fbf322")
+    resultstring = request.read()
+    return json.loads(resultstring)
+
+
+def get8Tracks(query):
+    url = "http://8tracks.com/mix_sets/tags:%s.json?include=mixes"
+    url = url%(query)
+    try:
+        results = createJSON(url)
+        return results["mixes"]
+    except ValueError:
+        return None
+    except IndexError:
+        return None
+
 def getResults( attribute, search ):
     #attribute = if it is a holiday, cusine, or ingredient
     #search = their actual input
