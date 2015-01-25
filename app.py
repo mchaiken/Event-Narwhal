@@ -176,8 +176,12 @@ def login():
 def eighttracks():
     if 'user' not in session:
         return redirect('/')
-    
-    return render_template( 'search.html', message="Search 8tracks for music!", results=get8Tracks(request.args.get("query")))
+    if request.args.get( "query" ) != None:
+        playlists = get8Tracks( request.args.get("query") )
+    else:
+        playlists=None
+    print playlists
+    return render_template( 'search.html', message="Search 8tracks for music!",playlists=playlists )
 
 
 @app.route( "/yummly", methods = ["GET", "POST"] )
@@ -205,7 +209,7 @@ def trackadd(url):
     if 'user' not in session:
         return redirect('/')
     database_actions.update_8tracks(session["user"], session["event_in_progress"], url)
-    return render_template( 'search.html', message="Added playlist to event.")
+    return render_template( 'search.html', message="Added playlist to event.",)
 
 
 
