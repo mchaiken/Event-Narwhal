@@ -31,23 +31,47 @@ def getID(token):
 
 def getGuests(token, EventID):
         graph = Graph(token)
-        return graph.get_connections(EventID, "invited")["data"]
+        ppl = graph.get_connections(EventID, "invited")["data"]
+        fin = []
+        for x in ppl:
+                fin.append(x["name"])
+        return fin
 
 def getAttending(token, EventID):
         graph = Graph(token)
-        return graph.get_connections(EventID, "attending")
+        ppl = graph.get_connections(EventID, "attending")
+        fin = []
+        for x in ppl:
+                fin.append(x["name"])
+        return fin
+
 
 def getDeclined(token, EventID):
         graph = Graph(token)
-        return graph.get_connections(EventID, "declined")["data"]
+        ppl = graph.get_connections(EventID, "declined")["data"]
+        fin = []
+        for x in ppl:
+                fin.append(x["name"])
+        return fin
+
 
 def getMaybe(token, EventID):
         graph = Graph(token)
-        return graph.get_connections(EventID, "maybe")["data"]
+        ppl = graph.get_connections(EventID, "maybe")["data"]
+        fin = []
+        for x in ppl:
+                fin.append(x["name"])
+        return fin
+
 
 def getUnknown(token, EventID):
         graph = Graph(token)
-        return graph.get_connections(EventID, "noreply")["data"]
+        ppl = graph.get_connections(EventID, "noreply")["data"]
+        fin = []
+        for x in ppl:
+                fin.append(x["name"])
+        return fin
+
 
 def getLocation(token, EventID): #may return None if no location has been set
         graph = Graph(token)
