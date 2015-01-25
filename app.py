@@ -155,15 +155,23 @@ def eighttracks():
 
 
 @app.route( "/yummly", methods = ["GET", "POST"] )
-def yummly():
+def yummly(event_index):
     if 'user' not in session:
         return redirect('/')
     if request.args.get("query") != None:
-        results= getResults(request.args.get("type"),request.args.get("query"))["matches"]
+        results= getResults(request.args.get("type"),event=eventindex,request.args.get("query"))["matches"]
     else:
         results = None
     print results
-    return render_template( 'search.html',placeholder="Search yummly for recipies...",results=results)
+    return render_template( 'search.html',event=event_index,placeholder="Search yummly for recipies...",results=results)
+
+
+@app.route( "/yummly/<recipeID>/", methods = ["GET", "POST"] )
+def yummlyadd(recipeID):
+    if 'user' not in session:
+        return redirect('/')
+    database_actions.update_yummly(session["user"],session["event_in_progress"],recipeID)
+    return render_template( 'search.html',placeholder="added event")
 
 
 
