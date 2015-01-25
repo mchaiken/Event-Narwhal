@@ -67,8 +67,9 @@ def get_attending(id,index):
 
 #not sure if this should be in the yummly section or not so I will comment it out
 '''
-def get_recipes(id, ename):
+def get_recipes(id, index):
     #how do you find the right event?
+    events = get_events(id)
     return db.users.find_one({"_id":id}).get("events, name=ename, food-selections}
 
 
