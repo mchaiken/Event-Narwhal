@@ -93,7 +93,7 @@ def set():
                         return redirect('/')
                 elif request.method == "POST":
                     print database_actions.add_event(session["user"],request.form["name"],request.form["theme"],request.form["fb_id"]) #this isn't done, but just a placeholder
-                    session["event_in_progress"]= len(database_actions.get_events(session["user"]) - 1
+                    session["event_in_progress"]= len(database_actions.get_events(session["user"]))- 1
                     return render_template( 'set.html', events=database_actions.get_events( session["user"] ) )
                 return redirect("/new")
         except:
@@ -147,15 +147,15 @@ def eighttracks():
 
 
 @app.route( "/yummly", methods = ["GET", "POST"] )
-def yummly(event_index):
+def yummly():
     if 'user' not in session:
         return redirect('/')
     if request.args.get("query") != None:
-        results= getResults(request.args.get("type"),event=eventindex,request.args.get("query"))["matches"]
+        results= getResults(request.args.get("type"),request.args.get("query"))["matches"]
     else:
         results = None
-    print results
-    return render_template( 'search.html',event=event_index,placeholder="Search yummly for recipies...",results=results)
+#    print results
+    return render_template( 'search.html',placeholder="Search yummly for recipies...",results=results)
 
 
 @app.route( "/yummly/<recipeID>/", methods = ["GET", "POST"] )
