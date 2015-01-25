@@ -133,6 +133,10 @@ def logout():
         session.pop( 'user', None )
         return render_template( "logout.html" )
 
+#logout button on other pages will redirect to this
+@app.route( "/settings" )
+def settings():
+    return render_template( "settings.html" )
 
 
 
