@@ -4,24 +4,27 @@
 
 <h4>{{ message }}</h4>
 
-{% if message == "Search Yummly for recipes!" %}
+{% if message == "Search Yummly for recipes!" || message == "Search 8tracks for music!" %}
 
-<form class= "form-inline form-group">
+<form class="form-inline form-group">
     
     <input type="text" class="form-control" placeholder="Search..." name="query"/>
     
+	{% if message == "Search Yummly for recipes!" %}
     <select class= "form-control" name="type" style="width:20%">
         <option value="ingredients">Search by...</option>
         <option value="ingredients">Ingredients</option>
         <option value="cuisine"/>Cuisine</option>
         <option value="holiday">Holiday</option>
     </select>
-    
+	{% endif %}
+	
+{% endif %}    
     <button type="submit" class="btn btn-warning">Search</button>
-    
+
 </form>
 
-{% endif %}
+
 
 {% if results != None %}
 {% for result in results %}
