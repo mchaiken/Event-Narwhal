@@ -71,7 +71,7 @@ def set():
         #database_actions.add_event(session["user"],request.form["name"],request.form["theme"]) #this isn't done, but just a placeholder
     return render_template( 'settings.html', facebook_events=FB.getAllEvents( session["token"] ), events=database_actions.get_events( session["user"] ) )
 
->>>>>>> e73a88026161175fb98c61a8a57e5e5a363e1f57
+
 
 @app.route( "/event/<event_index>" )
 def event( event_index ):
