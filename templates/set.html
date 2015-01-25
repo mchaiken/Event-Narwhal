@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 
 {% block bodycontent %}
-<div class= "container">
+
 		<script>
 		function popup(url) {
-		    var myWindow = window.open(url, "Search 8traks", "width=500, height=500");
+		   var window= window.open(url, "Search 8traks", "width=500", "height=500");
+		    console.log("popup!");
 		}
 		</script>
-
+<div class= "container">
     <div class="row">
         
         <!-- keyword(s?) for yummly -->
