@@ -76,7 +76,7 @@
 
 <div class="media container">
     
-    <h4><a href="/8tracks/'{{ playlist['restful_url'] }}/player_v3_universal'">{{ playlist["slug"] }}</a></h4>
+    <h4><a href="/8tracks/{{ playlist['restful_url'].split('/')[4]}}">{{ playlist["slug"] }}</a></h4>
     <div class="row container">
         
         {% if "sq72" in playlist["cover_urls"].keys() %}

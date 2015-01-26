@@ -213,7 +213,7 @@ def yummlyadd(recipeID):
 def trackadd(url):
     if 'user' not in session:
         return redirect('/')
-    database_actions.update_8tracks(session["user"], session["event_in_progress"], url)
+    database_actions.update_8tracks(session["user"], session["event_in_progress"], "http://8tracks.com/mixes/"+url+"/player_v3_universal")
     return render_template( 'search.html', message="Added playlist to event.",)
 
 

@@ -55,7 +55,7 @@ def get_event(id,index):
 
 def update_8tracks(id,index,link):
     events=get_events(id)
-    events[index]["8tracks"]=link
+    events[int(index.encode("utf8"))]["8tracks"]=link
     db.users.update({"_id":id},{"$set":{"events":events}})
 
 
