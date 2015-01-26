@@ -4,6 +4,7 @@
 
 <div class="container">
     
+    <!-- name/description -->
     <div class="row">
         
         <div class="panel panel-info">
@@ -26,6 +27,83 @@
         
     </div> <!-- /row -->
     
+    <!-- attending/maybe/declined/no_response -->
+    <div class="row">
+        
+        <div class="col-md-3">
+            
+            <div class="panel panel-info">
+                
+                <div class="panel-heading">
+                    <center>
+                        Attending
+                    </center>
+                </div> <!-- /panel-heading -->
+                
+                <div class="panel-body">
+                    
+                </div> <!-- /panel-body -->
+                
+            </div> <!-- /panel -->
+            
+        </div> <!-- /col -->
+        
+        <div class="col-md-3-offset-3">
+            
+            <div class="panel panel-warning">
+                
+                <div class="panel-heading">
+                    <center>
+                        Maybe
+                    </center>
+                </div> <!-- /panel-heading -->
+                
+                <div class="panel-body">
+                    
+                </div> <!-- /panel-body -->
+                
+            </div> <!-- /panel -->
+            
+        </div> <!-- /col -->
+        
+        <div class="col-md-3-offset-6">
+            
+            <div class="panel panel-danger">
+                
+                <div class="panel-heading">
+                    <center>
+                        Declined
+                    </center>
+                </div> <!-- /panel-heading -->
+                
+                <div class="panel-body">
+                    
+                </div> <!-- /panel-body -->
+                
+            </div> <!-- /panel -->
+            
+        </div> <!-- /col -->
+        
+        <div class="col-md-3-offset-9">
+            
+            <div class="panel panel-default">
+                
+                <div class="panel-heading">
+                    <center>
+                        No Response
+                    </center>
+                </div> <!-- /panel-heading -->
+                
+                <div class="panel-body">
+                    
+                </div> <!-- /panel-body -->
+                
+            </div> <!-- /panel -->
+            
+        </div> <!-- /col -->
+        
+    </div> <!-- /row -->
+    
     <div class="row">
         
         <!-- yummly -->
@@ -42,13 +120,13 @@
                 <div class="panel-body">
                     <center>
                         
-                        
+                        <!-- {{ event["food"] }} -->
                         
                     </center>
                 </div> <!-- /panel-body -->
                 
             </div> <!-- /panel -->
-
+            
         </div> <!-- /col -->
         
         <!-- 8tracks -->
@@ -65,11 +143,9 @@
                 <div class="panel-body">
                     <center>
                         
-                        8tracks embed stuff will go here?
+                        <iframe src="{{ event[8tracks] }}" width="400" height="400" style="border: 0px none;"></iframe>
                         
                         <!--
-                         
-                         <iframe src="http://8tracks.com/mixes/{{mixID}}/player_v3_universal" width="400" height="400" style="border: 0px none;"></iframe>
                          <p class="_8t_embed_p" style="font-size: 11px; line-height: 12px;"><a href="?utm_medium=trax_embed">{{mixTitle}}</a> from <a href="?utm_medium=trax_embed">{{mixDJ}}</a> on <a href="http://8tracks.com?utm_medium=trax_embed">8tracks Radio</a>.</p>
                          -->
                         
@@ -98,10 +174,10 @@
         
         <div class="col-md-offset-6">
             
-           
-                <button class="btn btn-danger btn-lg">
-                    Delete Event
-                </button>
+            
+            <button class="btn btn-danger btn-lg">
+                Delete Event
+            </button>
             </a>
             
         </div> <!-- /col -->
