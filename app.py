@@ -163,6 +163,11 @@ def settings(event_id):
     session["event_in_progress"]=event_id
     return render_template( "settings.html", facebook_events=FB.getHostedEvents( session["token"] ),event=event)
 
+@app.route( "/settings/<event_id>/update" )
+def update(event_id):
+     database_actions.update_all(session["user"],request.form["name"],request.form["theme"],request.form("fb_id"))
+    return redirect("/event/"+event_id)
+
 
 #logout button on other pages will redirect to this
 
