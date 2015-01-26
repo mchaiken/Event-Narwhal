@@ -23,7 +23,7 @@ def getResults( attribute, search ):
         Mediterranean, Greek, Spanish, German, Thai, Moroccan, Irish, Japanese, Cuban,
         Hawaiin, Swedish, Hungarian, Portugese
         '''
-        url = "http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e&q=&allowedCusine[]=cuisine^cuisine-" + search.lower()
+        url = "http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e&q=&allowedCuisine[]=cuisine^cuisine-" + search.lower()
     else:
          url = "http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e"
          for ingredient in search:
