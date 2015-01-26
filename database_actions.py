@@ -59,10 +59,10 @@ def update_8tracks(id,index,link):
     db.users.update({"_id":id},{"$set":{"events":events}})
 
 def update_all(id,index,name,theme,fb):
-    events=get_events(id)
-    events[int(index.encode("utf8"))]["theme"]=theme
-    events[int(index.encode("utf8"))]["name"]=name
-    events[int(index.encode("utf8"))]["facebook-id"]=fb
+    events=get_events(id,index)
+    events["theme"]=theme
+    events["name"]=name
+    events["facebook-id"]=fb
     db.users.update({"_id":id},{"$set":{"events":events}})
 
 

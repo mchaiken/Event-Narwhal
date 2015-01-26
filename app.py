@@ -135,7 +135,7 @@ def set():
 
 
 
-@app.route( "/event/<event_index>" )
+@app.route( "/event/<event_index>",methods = ["GET", "POST"] )
 def event( event_index ):
         if 'user' not in session:
                 return redirect( "/" )
@@ -161,12 +161,12 @@ def logout():
 def settings(event_id):
     event=database_actions.get_event(session["user"], event_id)
     session["event_in_progress"]=event_id
-    return render_template( "settings.html", facebook_events=FB.getHostedEvents( session["token"] ),event=event)
+    return render_template( "settings.html", index=event_id,facebook_events=FB.getHostedEvents( session["token"] ),event=event)
 
-@app.route( "/settings/<event_id>/update" )
+@app.route( "/settings/<event_id>/update",methods = ["GET", "POST"] )
 def update(event_id):
-     database_actions.update_all(session["user"],request.form["name"],request.form["theme"],request.form("fb_id"))
-    return redirect("/event/"+event_id)
+     database_actions.update_all(session["user"],event_id,request.form["name"],request.form["theme"],request.form["fb_event"])
+     return redirect("/event/"+event_id)
 
 
 #logout button on other pages will redirect to this
