@@ -139,7 +139,7 @@ def set():
 def event( event_index ):
         if 'user' not in session:
                 return redirect( "/" )
-        return render_template( "event.html", event=database_actions.get_event(session["user"], event_index), events=database_actions.get_events(session["user"]) )
+        return render_template( "event.html", event=database_actions.get_event(session["user"], event_index), index=event_index,events=database_actions.get_events(session["user"]) )
 
 
 #logout button on other pages will redirect to this
@@ -152,14 +152,15 @@ def logout():
         session.pop( 'user', None )
         return render_template( "logout.html" )
 
-#logout button on other pages will redirect to this
-@app.route( "/settings" )
-def settings():
-    return render_template( "settings.html" )
+
+
+
+
 
 @app.route( "/settings/<event_id>" )
 def settings(event_id):
     event=database_actions.get_event(session["user"], event_id)
+    session["event_in_progress"]=event_id
     return render_template( "settings.html", event=event)
 
 
