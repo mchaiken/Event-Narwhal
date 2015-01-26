@@ -140,6 +140,13 @@ def event( event_index ):
                 return redirect( "/" )
         return render_template( "event.html", event=database_actions.get_event(session["user"], event_index), index=event_index,events=database_actions.get_events(session["user"]) )
 
+@app.route( "/event/<event_index>/updatefb",methods = ["GET", "POST"] )
+def updatefb( event_index ):
+    if 'user' not in session:
+        return redirect( "/" )
+    database_actions.update_event(session["user"],event_index)
+    return render_template( "event.html", event=database_actions.get_event(session["user"], event_index), index=event_index,events=database_actions.get_events(session["user"]) )
+
 
 #logout button on other pages will redirect to this
 @app.route( "/logout" )

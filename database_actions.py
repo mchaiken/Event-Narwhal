@@ -41,22 +41,6 @@ def remove_event(id,index):
     print db.users.find_one({"_id":id}).get("name")
     return True
 
-#update an event
-def update_event(id, index, name, description, date, location, attending, declined, maybe, not_responded):
-    #finding event to update
-    event = get_event(id, index)
-    #new info gotten from app.py using the FB.py methods
-    event["name"] = name
-    event["description"] = description
-    event["date"] = date
-    event["location"] = location
-    event["attending"] = attending
-    event["declined"] = declined
-    event["maybe"] = maybe
-    event["not-responded"] = not_responded
-    #how do i do this part i dont know mongo
-    #db.users.update({"_id":id}{"events"[index]:event}) 
-    return None
 
 #get a user's events
 def get_events(id):
@@ -75,10 +59,10 @@ def update_8tracks(id,index,link):
     db.users.update({"_id":id},{"$set":{"events":events}})
 
 def update_all(id,index,name,theme,fb):
-    events=get_events(id,index)
-    events["theme"]=theme
-    events["name"]=name
-    events["facebook-id"]=fb
+    events=get_events(id)
+    events[index]["theme"]=theme
+    events[index]["name"]=name
+    events[index]["facebook-id"]=fb
     db.users.update({"_id":id},{"$set":{"events":events}})
 
 
@@ -87,6 +71,22 @@ def update_yummly(id,index,link):
     events[index]["food"]=link
     db.users.update({"_id":id},{"$set":{"events":events}})
 
+#update an event
+def update_event(id, index, description, date, location, attending, declined, maybe, not_responded):
+    #finding event to update
+    events = get_event(id)
+    #new info gotten from app.py using the FB.py methods
+    events[index]["name"] = name
+    events[index]["description"] = description
+    events[index]["date"] = date
+    events[index]["location"] = location
+    events[index]["attending"] = attending
+    events[index]["declined"] = declined
+    events[index]["maybe"] = maybe
+    events[index]["not-responded"] = not_responded
+    #how do i do this part i dont know mongo
+    #db.users.update({"_id":id}{"events"[index]:event})
+    db.users.update({"_id":id},{"$set":{"events":events}})
 
 #get those attending a given event with the user's ID and the Index of the event
 def get_attending(id,index):
