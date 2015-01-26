@@ -30,8 +30,10 @@ def getResults( attribute, search ):
              if ingredient[0] == " ":
                  ingredient = ingredient[1:]
                  url += "&allowedIngredient[]=" + ingredient.lower()
-    request = urllib2.urlopen( url )
+    request = urllib2.urlopen(url)
     result = request.read()
+    d = json.loads(result)
+    results=d["matches"]
     #print url
     return json.loads( result )
 
