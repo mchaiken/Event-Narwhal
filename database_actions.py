@@ -41,6 +41,22 @@ def remove_event(id,index):
     print db.users.find_one({"_id":id}).get("name")
     return True
 
+#update an event
+def update_event(id, index, name, description, date, location, attending, declined, maybe, not_responded):
+    #finding event to update
+    event = get_event(id, index)
+    #new info gotten from app.py using the FB.py methods
+    event["name"] = name
+    event["description"] = description
+    event["date"] = date
+    event["location"] = location
+    event["attending"] = attending
+    event["declined"] = declined
+    event["maybe"] = maybe
+    event["not-responded"] = not_responded
+    #how do i do this part i dont know mongo
+    #db.users.update({"_id":id}{"events"[index]:event}) 
+    return None
 
 #get a user's events
 def get_events(id):
