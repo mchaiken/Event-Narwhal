@@ -140,7 +140,7 @@ def event( event_index ):
                 return redirect( "/" )
         return render_template( "event.html", event=database_actions.get_event(session["user"], event_index), index=event_index,events=database_actions.get_events(session["user"]) )
 
-@app.route( "/event/<event_index>/updatefb",methods = ["GET", "POST"] )
+@app.route( "/event/<event_index>/update",methods = ["GET", "POST"] )
 def updatefb( event_index ):
     if 'user' not in session:
         return redirect( "/" )
