@@ -76,13 +76,13 @@
 
 <div class="media container">
     
-    <h6><a href="/8tracks/{{ playlist['id'] }}">{{ playlist["slug"] }}</a></h6>
+    <h4><a href="/8tracks/{{ playlist['id'] }}">{{ playlist["slug"] }}</a></h4>
     <div class="row container">
         
-        {% if "max133w" in playlist["cover_url"].keys() %}
+        {% if "sq72" in playlist["cover_urls"].keys() %}
         
         <div class="col-md-1">
-            <img src="{{ playlist["cover_url"]["max133w"] }}"/>
+            <img src="{{ playlist['cover_urls']['sq72'] }}"/>
         </div> <!-- /col -->
         
         {% else %}
@@ -94,7 +94,10 @@
         {% endif %}
         
         <div class="col-md-8">
-            <strong>Description:</strong> {{playlist["description"]}}<br>
+          <strong>Description:</strong> {{playlist["description"]}}<br>
+	  <strong>Track Count:</strong> {{playlist["tracks_count"]}}<br>
+	  <strong>Plays:</strong> {{playlist["plays_count"]}}<br>
+	  
 
         </div> <!-- /col -->
         
