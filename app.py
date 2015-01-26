@@ -115,7 +115,6 @@ def set():
                     session["event_in_progress"]= len(database_actions.get_events(session["user"]))- 1
 
                     ID = request.form["fb_id"]
-                    print "asgsgsfgsagasfgasfgasfgasfgasgf    " + ID
                     token = session["token"]
                     description = FB.getDescription(token, ID)
                     date = FB.getStartTime(token, ID)
