@@ -2,40 +2,110 @@
 
 {% block bodycontent %}
 
-<form class= "form-inline form-group">
-	<input type = "text"class = "form-control" placeholder = "{{placeholder}}" name="query"/>
-	{% if placeholder == "Search yummly for recipies..." %}
-	<select class= "form-control" name="type"style="width:20%">
-		<option value="ingredients">Search by...</option>
-		<option value="ingredients">Ingredients</option>
-		<option value="cuisine"/>Cuisine</option>
-		<option value="holiday">Holiday</option>
-	</select>
-	{%endif%}
-		<button type="submit"class= "btn btn-warning">Search</button>
+<h4>{{ message }}</h4>
+
+{% if message == "Search Yummly for recipes!" %}
+
+<form class="form-inline form-group">
+    
+    <input type="text" class="form-control" placeholder="Search..." name="query"/>
+    
+    <select class= "form-control" name="type" style="width:20%">
+        <option value="ingredients">Search by...</option>
+        <option value="ingredients">Ingredients</option>
+        <option value="cuisine"/>Cuisine</option>
+        <option value="holiday">Holiday</option>
+    </select>
+	
+    <button type="submit" class="btn btn-warning">Search</button>
+
 </form>
-	{% if results != None %}
-	    {% for result in results %}
-	        <div class="media container">
-            
-	            <h6><a href="/yummly/{{result['id']}}">{{result["recipeName"]}}</a></h6>
-	            <div class="row container">
-					{% if "smallImageUrls" in result.keys() %}
-	                <div class="col-md-1"> <img src="{{result["smallImageUrls"][0]}}"> </div>
-					{%else %}
-					 <div class="col-md-1"> <img src="http://lorempixel.com/90/65/animals/sorry"> </div>
-					{% endif %}
-				
-	            <div class="col-md-8">
-	                <strong>Source:</strong> {{result["sourceDisplayName"]}}<br>
-	                <strong>Rating:</strong> {{result["rating"]}}<br>
-	                <strong>Ingredients:</strong> {{", ".join(result["ingredients"])}}</div>
-            
-	            </div>
-                
-	        </div>
-	    <br>
-	    {% endfor %}
-	{%endif %}
-		
+
+{% elif message=="Search 8tracks for music!"%}
+
+<form class="form-inline form-group">
+
+  <input type="text" class="form-control" placeholder="Search..." name="query"/>
+
+  <button type="submit" class="btn btn-warning">Search</button>
+
+</form>
+
+{% endif %}    
+
+
+
+{% if results != None %}
+{% for result in results %}
+
+<div class="media container">
+    
+    <h6><a href="/yummly/{{ result['id'] }}">{{ result["recipeName"] }}</a></h6>
+    <div class="row container">
+        
+        {% if "smallImageUrls" in result.keys() %}
+        
+        <div class="col-md-1">
+            <img src="{{ result["smallImageUrls"][0] }}"/>
+        </div> <!-- /col -->
+        
+        {% else %}
+        
+        <div class="col-md-1">
+            <img src="http://lorempixel.com/90/65/animals/sorry"/>
+        </div> <!-- /col -->
+        
+        {% endif %}
+        
+        <div class="col-md-8">
+            <strong>Source:</strong> {{result["sourceDisplayName"]}}<br>
+            <strong>Rating:</strong> {{result["rating"]}}<br>
+            <strong>Ingredients:</strong> {{", ".join(result["ingredients"])}}
+        </div> <!-- /col -->
+        
+    </div> <!-- /row -->
+    
+</div> <!-- /media -->
+
+{% endfor %}
+{% endif %}
+
+
+{% if playlists != None %}
+{% for playlist in playlists %}
+
+<div class="media container">
+    
+    <h4><a href="/8tracks/{{ playlist['restful_url'].split('/')[4]}}">{{ playlist["slug"] }}</a></h4>
+    <div class="row container">
+        
+        {% if "sq72" in playlist["cover_urls"].keys() %}
+        
+        <div class="col-md-1">
+            <img src="{{ playlist['cover_urls']['sq72'] }}"/>
+        </div> <!-- /col -->
+        
+        {% else %}
+        
+        <div class="col-md-1">
+            <img src="http://lorempixel.com/90/65/animals/sorry"/>
+        </div> <!-- /col -->
+        
+        {% endif %}
+        
+        <div class="col-md-8">
+          <strong>Description:</strong> {{playlist["description"]}}<br>
+	  <strong>Track Count:</strong> {{playlist["tracks_count"]}}<br>
+	  <strong>Plays:</strong> {{playlist["plays_count"]}}<br>
+	  
+
+        </div> <!-- /col -->
+        
+    </div> <!-- /row -->
+    
+</div> <!-- /media -->
+
+{% endfor %}
+{% endif %}
+
 {%endblock bodycontent %}

@@ -25,6 +25,7 @@ def get8Tracks(query):
     except IndexError:
         return None
 
+
 def getResults( attribute, search ):
     #attribute = if it is a holiday, cusine, or ingredient
     #search = their actual input
@@ -133,11 +134,11 @@ def set():
 
 
 
-@app.route( "/event/<event_index>" )
+@app.route( "/event/<event_index>",methods = ["GET", "POST"] )
 def event( event_index ):
         if 'user' not in session:
                 return redirect( "/" )
-        return render_template( "event.html", event=database_actions.get_event(session["user"], event_index), events=database_actions.get_events(session["user"]) )
+        return render_template( "event.html", event=database_actions.get_event(session["user"], event_index), index=event_index,events=database_actions.get_events(session["user"]) )
 
 
 #logout button on other pages will redirect to this
@@ -150,11 +151,21 @@ def logout():
         session.pop( 'user', None )
         return render_template( "logout.html" )
 
-#logout button on other pages will redirect to this
-@app.route( "/settings" )
-def settings():
-    return render_template( "settings.html" )
 
+
+
+
+
+@app.route( "/settings/<event_id>" )
+def settings(event_id):
+    event=database_actions.get_event(session["user"], event_id)
+    session["event_in_progress"]=event_id
+    return render_template( "settings.html", index=event_id,facebook_events=FB.getHostedEvents( session["token"] ),event=event)
+
+@app.route( "/settings/<event_id>/update",methods = ["GET", "POST"] )
+def update(event_id):
+     database_actions.update_all(session["user"],event_id,request.form["name"],request.form["theme"],request.form["fb_event"])
+     return redirect("/event/"+event_id)
 
 
 #logout button on other pages will redirect to this
@@ -174,33 +185,40 @@ def login():
 def eighttracks():
     if 'user' not in session:
         return redirect('/')
-    
-    return render_template( 'search.html',placeholder="Search 8tracks for music...")
-
-
-
+    if request.args.get( "query" ) != None:
+        playlists = get8Tracks( request.args.get("query") )
+    else:
+        playlists=None
+    print playlists
+    return render_template( 'search.html', message="Search 8tracks for music!",playlists=playlists )
 
 
 @app.route( "/yummly", methods = ["GET", "POST"] )
 def yummly():
     if 'user' not in session:
-        return redirect('/')
-    if request.args.get("query") != None:
-        results= getResults(request.args.get("type"),request.args.get("query"))["matches"]
+        return redirect( '/' )
+    if request.args.get( "query" ) != None:
+        results = getResults( request.args.get("type"), request.args.get("query") )[ "matches" ]
     else:
         results = None
 #    print results
-    return render_template( 'search.html',placeholder="Search yummly for recipies...",results=results)
+    return render_template( 'search.html', message="Search Yummly for recipes!", results=results)
 
 
 @app.route( "/yummly/<recipeID>/", methods = ["GET", "POST"] )
 def yummlyadd(recipeID):
     if 'user' not in session:
         return redirect('/')
-    database_actions.update_yummly(session["user"],session["event_in_progress"],recipeID)
-    return render_template( 'search.html',placeholder="added event")
+    database_actions.update_yummly(session["user"],session["event_in_progress"], recipeID)
+    return render_template( 'search.html', message="Added recipe to event.")
 
 
+@app.route( "/8tracks/<url>/", methods = ["GET", "POST"] )
+def trackadd(url):
+    if 'user' not in session:
+        return redirect('/')
+    database_actions.update_8tracks(session["user"], session["event_in_progress"], "http://8tracks.com/mixes/"+url+"/player_v3_universal")
+    return render_template( 'search.html', message="Added playlist to event.",)
 
 
 
