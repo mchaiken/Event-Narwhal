@@ -76,13 +76,13 @@
 
 <div class="media container">
     
-    <h6><a href="/8tracks/{{ playlist['id'] }}">{{ playlist["recipeName"] }}</a></h6>
+    <h6><a href="/8tracks/{{ playlist['id'] }}">{{ playlist["slug"] }}</a></h6>
     <div class="row container">
         
-        {% if "smallImageUrls" in result.keys() %}
+        {% if "max133w" in playlist["cover_url"].keys() %}
         
         <div class="col-md-1">
-            <img src="{{ result["smallImageUrls"][0] }}"/>
+            <img src="{{ playlist["cover_url"]["max133w"] }}"/>
         </div> <!-- /col -->
         
         {% else %}
@@ -94,9 +94,8 @@
         {% endif %}
         
         <div class="col-md-8">
-            <strong>Source:</strong> {{result["sourceDisplayName"]}}<br>
-            <strong>Rating:</strong> {{result["rating"]}}<br>
-            <strong>Ingredients:</strong> {{", ".join(result["ingredients"])}}
+            <strong>Description:</strong> {{playlist["description"]}}<br>
+
         </div> <!-- /col -->
         
     </div> <!-- /row -->
