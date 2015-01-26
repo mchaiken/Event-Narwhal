@@ -157,6 +157,9 @@ def logout():
 def settings():
     return render_template( "settings.html" )
 
+@app.route( "/settings/<event_id>" )
+def settings(event_id):
+    return render_template( "settings.html" )
 
 
 #logout button on other pages will redirect to this

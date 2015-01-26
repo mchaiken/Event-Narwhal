@@ -9,7 +9,7 @@
 <div class="container">
   <form method = "POST">
     <center>
-    <input type="text" name="name" class="form-control input-lg" placeholder="Event Name"> <br/>
+    <input type="text" name="name" class="form-control input-lg" value="{{event['name']}}"placeholder="Event Name"> <br/>
 </center>
     <div class="row">
         <!-- pull event from facebook -->
@@ -26,8 +26,12 @@
                 <div class="panel-body">
                     <center>
                         <select  class= "form-control input-lg"name="fb_event">
-			  {% for event in facebook_events %}
-			  <option value ="{{event[id]}}">{{event["name"]}}</option>
+			  {% for fb_event in facebook_events %}
+			  {%if event["fb"] == fb_event["id"] %}
+			  <option value ="{{fb_event[id]}}" selected>{{fb_event["name"]}}</option>
+			  {%else %}
+			  <option value ="{{fb_event[id]}}">{{fb_event["name"]}}</option>
+			  {%endif%}
 			{%endfor%}
 			</select>
 
