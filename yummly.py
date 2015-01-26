@@ -18,6 +18,11 @@ def getResults( attribute, search ):
     if attribute == "holiday":
         url = "http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e&q=&allowedHoliday[]=holiday^holiday-" + search.lower()
     elif attribute == "cuisine":
+        '''American, Italian, Asian, Mexican, Southern & Soul Food, French,
+        Southwestern, Barbecue, Indian, Chinese, Cajun & Creole, English,
+        Mediterranean, Greek, Spanish, German, Thai, Moroccan, Irish, Japanese, Cuban,
+        Hawaiin, Swedish, Hungarian, Portugese
+        '''
         url = "http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e&q=&allowedCusine[]=cuisine^cuisine-" + search.lower()
     else:
          url = "http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e"
