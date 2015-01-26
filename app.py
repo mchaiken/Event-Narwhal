@@ -159,7 +159,8 @@ def settings():
 
 @app.route( "/settings/<event_id>" )
 def settings(event_id):
-    return render_template( "settings.html" )
+    event=database_actions.get_event(session["user"], event_id)
+    return render_template( "settings.html", event=event)
 
 
 #logout button on other pages will redirect to this
