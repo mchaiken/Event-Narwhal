@@ -124,7 +124,7 @@ def set():
                     maybe =  FB.getMaybe(token, ID)
                     declined = FB.getDeclined(token, ID)
                     not_responded = FB.getUnknown(token, ID)
-                    print database_actions.add_event(session["user"],request.form["name"],request.form["theme"],ID, description, date, location, attending, declined, maybe, not_responded) #this isn't done, but just a placeholder
+                    print database_actions.add_event(session["user"],request.form["name"],request.form["theme"],ID, description, date, location, attending, declined, maybe, not_responded)
 
                     return render_template( 'set.html', events=database_actions.get_events( session["user"] ) )
                 return redirect("/new")
@@ -144,7 +144,16 @@ def event( event_index ):
 def updatefb( event_index ):
     if 'user' not in session:
         return redirect( "/" )
-    database_actions.update_event(session["user"],event_index)
+    ID = request.form["fb_id"]
+    token = session["token"]
+    description = FB.getDescription(token, ID)
+    date = FB.getStartTime(token, ID)
+    location = FB.getLocation(token, ID)
+    attending = FB.getAttending(token, ID)
+    maybe =  FB.getMaybe(token, ID)
+    declined = FB.getDeclined(token, ID)
+    not_responded = FB.getUnknown(token, ID)
+    print database_actions.update_event(session["user"],request.form["name"],request.form["theme"],ID, description, date, location, attending, declined, maybe, not_responded)
     return render_template( "event.html", event=database_actions.get_event(session["user"], event_index), index=event_index,events=database_actions.get_events(session["user"]) )
 
 
