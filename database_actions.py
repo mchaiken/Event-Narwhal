@@ -74,9 +74,8 @@ def update_yummly(id,index,link):
 #update an event
 def update_event(id, index, description, date, location, attending, declined, maybe, not_responded):
     #finding event to update
-    events = get_event(id)
+    events = get_events(id)
     #new info gotten from app.py using the FB.py methods
-    events[index]["name"] = name
     events[index]["description"] = description
     events[index]["date"] = date
     events[index]["location"] = location
@@ -93,7 +92,8 @@ def get_attending(id,index):
     events=get_events(id)
     return events[int(index.encode("utf8"))]["attending"]
 
-
+def get_fbid(id, index):
+    return get_event(id, index)["facebook-id"]
 #not sure if this should be in the yummly section or not so I will comment it out
 '''
     def get_recipes(id, index):
