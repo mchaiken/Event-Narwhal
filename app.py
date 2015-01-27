@@ -9,6 +9,7 @@ import yummly
 import urllib2, json
 
 
+
 def createJSON( url ):
     request = urllib2.urlopen( url + "&api_key=b72f8beba38aa9fb230d52bf6f45e2baf9fbf322" )
     resultstring = request.read()
@@ -139,7 +140,8 @@ def set():
 def event( event_index ):
         if 'user' not in session:
                 return redirect( "/" )
-        return render_template( "event.html", event=database_actions.get_event( session["user"], event_index ), index=event_index,events=database_actions.get_events( session["user"] ),yummly=urllib2.urlopen("www.yummly.com/recipe/external/Four-ingredient-banana-s_mores-cookies-344560") )
+       
+        return render_template( "event.html", event=database_actions.get_event( session["user"], event_index ), index=event_index,events=database_actions.get_events( session["user"] ) )
 
 
 @app.route( "/event/<event_index>/update",methods = ["GET", "POST"] )
@@ -227,7 +229,7 @@ def yummlyadd( recipeID ):
 def trackadd( url ):
     if "user" not in session:
         return redirect( "/" )
-    database_actions.update_8tracks( session["user"], session["event_in_progress"], "http://8tracks.com/mixes/" + url + "/player_v3_universal" )
+    database_actions.update_8tracks( session["user"], int(session["event_in_progress"].encode("utf8")), "http://8tracks.com/mixes/" + url + "/player_v3_universal" )
     return render_template( "search.html", message="Added playlist to event." )
 
 
