@@ -139,7 +139,7 @@ def set():
 def event( event_index ):
         if 'user' not in session:
                 return redirect( "/" )
-        return render_template( "event.html", event=database_actions.get_event( session["user"], event_index ), index=event_index,events=database_actions.get_events( session["user"] ) )
+        return render_template( "event.html", event=database_actions.get_event( session["user"], event_index ), index=event_index,events=database_actions.get_events( session["user"] ),yummly=urllib2.urlopen("www.yummly.com/recipe/external/Four-ingredient-banana-s_mores-cookies-344560") )
 
 
 @app.route( "/event/<event_index>/update",methods = ["GET", "POST"] )
