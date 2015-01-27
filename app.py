@@ -215,7 +215,7 @@ def yummly():
     if "user" not in session:
         return redirect( "/" )
     if request.args.get( "query" ) != None:
-        results = getResults( request.args.get("type"), request.args.get("query") )[ "matches" ]
+        results = getResults( request.args.get("type"), "+".join(request.args.get("query").split()))[ "matches" ]
     else:
         results = None
 #    print results
