@@ -1,4 +1,5 @@
 Event-Narwhal
+104.236.4.147
 =============
 
 Final Project, 1st Term SoftDev
@@ -53,3 +54,29 @@ Facebook API and OAuth
   * Yummly API - Sydney
   * 8traks - Jenny
   * Facebook API - Leon and Miranda
+
+####1/15
+  * Yummly API Search page- Sydney
+  * Basic Template for Event Page -Jenny
+  * Facebook API - Leon
+  * Delete Event mongo call, and start event creation-Miranda
+
+####1/20
+  * Yummly API Search page- Sydney
+  * Event Page with data-Jenny
+  * Facebook Login- Leon
+  * More event creation with facebook stuff and droplet -Miranda
+
+####1/23
+  * Full integration of Yummly and 8tracks -Sydney and Miranda
+  * Formatting of all pages with appropriate jinja calls
+  * Facebook Cookies- Leon
+  * create event using facebook events library, store that, and mongo on droplet-Miranda
+####1/26
+  * Full integration of Yummly and 8tracks -Sydney and Miranda
+  * Formatting of all pages with appropriate jinja calls
+  * Facebook Update- Leon
+  * droplet and final kinks in event display-Miranda
+####1/27
+  * Video -Sydney
+  * A few final things with logout -Miranda
