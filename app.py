@@ -35,15 +35,22 @@ def getResults( attribute, search ):
     if attribute == "holiday":
         url = "http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e&q=&allowedHoliday[]=holiday^holiday-" + search.lower()
     elif attribute == "cuisine":
-        url = "http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e&q=&allowedCusine[]=cuisine^cuisine-" + search.lower()
+        '''American, Italian, Asian, Mexican, Southern & Soul Food, French,
+        Southwestern, Barbecue, Indian, Chinese, Cajun & Creole, English,
+        Mediterranean, Greek, Spanish, German, Thai, Moroccan, Irish, Japanese, Cuban,
+        Hawaiin, Swedish, Hungarian, Portugese
+        '''
+        url = "http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e&q=&allowedCuisine[]=cuisine^cuisine-" + search.lower()
     else:
-        url = "http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e"
-        for ingredient in search:
-                if ingredient[0] == " ":
-                    ingredient = ingredient[1:]
-                    url += "&allowedIngredient[]=" + ingredient.lower()
-    request = urllib2.urlopen( url )
+         url = "http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e&q="
+         for ingredient in search:
+             if ingredient[0] == " ":
+                 ingredient = ingredient[1:]
+                 url += "&allowedIngredient[]=" + ingredient.lower()
+    request = urllib2.urlopen(url)
     result = request.read()
+    d = json.loads(result)
+    results=d["matches"]
     #print url
     return json.loads( result )
 
