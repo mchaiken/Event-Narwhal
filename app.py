@@ -64,10 +64,10 @@ db = conn["event_narwhal"]
 
 #flask setup
 app = Flask( __name__ )
+app.config["SECRET_KEY"]= open( "secret_key.txt" ).read()
 
 
-def validated( user_id ):
-        sessions[user] = db.users.find( "user_id:" + user_id )
+
 
 
 @app.route( "/", methods = ["GET", "POST"] )
@@ -77,11 +77,14 @@ def home():
                 cookie = facebook.get_user_from_cookie( request.cookies, FBAppID, FBAppSecret )
                 print cookie
                 if cookie != None:
+                        print "cooookieee"
                         session["token"] = cookie["access_token"]
+                        print "sesssioonnn"
                         session["user"] = FB.getID( session["token"] )
                         session["name"] =FB.getName(session["token"])
                         if database_actions.isRegistered(session["user"]):
-                                database_actions.login_user(session["user"])
+                            print "logging in"    
+                            database_actions.login_user(session["user"])
                         else:
                                 print "registering "
                                 database_actions.register_user(session["name"],session["user"])
@@ -180,7 +183,7 @@ def settings(event_id):
 
 @app.route( "/settings/<event_id>/update",methods = ["GET", "POST"] )
 def update(event_id):
-     database_actions.update_all(session["user"],event_id,request.form["name"],request.form["theme"],request.form["fb_event"])
+     database_actions.update_all(session["user"],int(event_id.encode("utf8")),request.form["name"],request.form["theme"],request.form["fb_event"])
      return redirect("/event/"+event_id)
 
 
@@ -237,9 +240,9 @@ def trackadd(url):
     return render_template( 'search.html', message="Added playlist to event.",)
 
 
-
 if __name__ == "__main__":
         app.debug = True
         app.secret_key = open( "secret_key.txt" ).read()
-        app.run( host="149.89.150.1")
-        #        app.run()
+        app.run( host="104.236.4.147")
+        #app.run(debug=True)
+
