@@ -158,13 +158,13 @@ def updatefb( event_index ):
     declined = FB.getDeclined( token, ID )
     not_responded = FB.getUnknown( token, ID )
     print database_actions.update_event( session["user"], int( event_index.encode("utf8") ), description, date, location, attending, declined, maybe, not_responded)
-    return render_template( "event.html", event=database_actions.get_event( session["user"], event_index ), index=event_index, events=database_actions.get_events( session["user"] )
-                           )
+    return redirect("/event/"+event_index)
+
 @app.route( "/event/<event_index>/remove",methods = ["GET", "POST"] )
-def updatefb( event_index ):
+def remove( event_index ):
     if 'user' not in session:
         return redirect( "/" )
-    database_actions.remove_event(session["user"],event_index)
+    database_actions.remove_event(session["user"],int(event_index.encode("utf8")))
     return redirect("/")
 
 
@@ -182,7 +182,7 @@ def logout():
 @app.route( "/settings/<event_id>" )
 def settings( event_id ):
     event = database_actions.get_event( session["user"], event_id )
-    session["event_in_progress"] = event_id
+    session["event_in_progress"] = int(event_id.encode("utf8"))
     return render_template( "settings.html", index=event_id, facebook_events=FB.getHostedEvents( session["token"] ), event=event )
 
 
@@ -208,7 +208,7 @@ def eighttracks():
         playlists = get8Tracks( request.args.get("query") )
     else:
         playlists = None
-    print playlists
+    #print playlists
     return render_template( "search.html", message="Search 8tracks for music!", playlists=playlists )
 
 
@@ -228,7 +228,7 @@ def yummly():
 def yummlyadd( recipeID ):
     if "user" not in session:
         return redirect( "/" )
-    database_actions.update_yummly( session["user"], int(session["event_in_progress"].encode("utf8")), recipeID )
+    database_actions.update_yummly( session["user"], session["event_in_progress"], recipeID )
     return render_template( "search.html", message="Added recipe to event." )
 
 
@@ -236,7 +236,7 @@ def yummlyadd( recipeID ):
 def trackadd( url ):
     if "user" not in session:
         return redirect( "/" )
-    database_actions.update_8tracks( session["user"], int(session["event_in_progress"].encode("utf8")), "http://8tracks.com/mixes/" + url + "/player_v3_universal" )
+    database_actions.update_8tracks( session["user"], session["event_in_progress"], "http://8tracks.com/mixes/" + url + "/player_v3_universal" )
     return render_template( "search.html", message="Added playlist to event." )
 
 
