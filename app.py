@@ -82,7 +82,7 @@ def home():
                         print "cooookieee"
                         session["token"] = cookie["access_token"]
                         print "sesssioonnn"
-                return redirect( "/login" )
+                        return redirect( "/login" )
                 return render_template( "home.html" )
         return render_template( "my_events.html", events=database_actions.get_events( session["user"] ) )
 
@@ -163,12 +163,13 @@ def remove( event_index ):
 #logout button on other pages will redirect to this
 @app.route( "/logout" )
 def logout():
-        cookie = facebook.get_user_from_cookie( request.cookies, FBAppID, FBAppSecret )
-        print cookie
-        #log user out
-        #page will have button to return to login page
-        session.pop( 'user', None )
-        return render_template( "logout.html" )
+    #cookie = facebook.get_user_from_cookie( request.cookies, FBAppID, FBAppSecret )  
+    #request.cookies.set_cookie('sessionID', '', expires=0)
+    #print cookie
+    #log user out
+    #page will have button to return to login page
+    session.pop( 'user', None )
+    return render_template( "logout.html" )
 
 
 @app.route( "/settings/<event_id>" )
@@ -194,7 +195,7 @@ def login():
     else:
         print "registering "
         database_actions.register_user( session["name"], session["user"] )
-    return redirect( "/" )
+    return redirect( "/" )
 
 
 @app.route( "/8tracks", methods = ["GET", "POST"] )
