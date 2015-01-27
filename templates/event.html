@@ -152,7 +152,7 @@
                 <div class="panel-body">
                     <center>
                         
-                        <!-- {{ event["food"] }} -->
+                        <a href="http://www.yummly.com/recipe/{{ event['food'] }}"> Check out {{ event["food"].split("-")[: event["food"].split("-")|length -1]|join(" ")}} on Yummly</a>
                         
                     </center>
                 </div> <!-- /panel-body -->

@@ -2,8 +2,9 @@
 
 {% block bodycontent %}
 
-(% if events  %}
+{% if events|length==0  %}
 <center> <h1> No Events to display</h1 ></center>
+{% endif %}
 {% set i = 0 %}
 {% for event in events %}
 

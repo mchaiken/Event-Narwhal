@@ -219,7 +219,7 @@ def yummly():
 def yummlyadd( recipeID ):
     if "user" not in session:
         return redirect( "/" )
-    database_actions.update_yummly( session["user"], session["event_in_progress"], recipeID )
+    database_actions.update_yummly( session["user"], int(session["event_in_progress"].encode("utf8")), recipeID )
     return render_template( "search.html", message="Added recipe to event." )
 
 
