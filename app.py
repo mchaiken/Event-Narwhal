@@ -158,7 +158,14 @@ def updatefb( event_index ):
     declined = FB.getDeclined( token, ID )
     not_responded = FB.getUnknown( token, ID )
     print database_actions.update_event( session["user"], int( event_index.encode("utf8") ), description, date, location, attending, declined, maybe, not_responded)
-    return render_template( "event.html", event=database_actions.get_event( session["user"], event_index ), index=event_index, events=database_actions.get_events( session["user"] ) )
+    return render_template( "event.html", event=database_actions.get_event( session["user"], event_index ), index=event_index, events=database_actions.get_events( session["user"] )
+                           )
+@app.route( "/event/<event_index>/remove",methods = ["GET", "POST"] )
+def updatefb( event_index ):
+    if 'user' not in session:
+        return redirect( "/" )
+    database_actions.remove_event(session["user"],event_index)
+    return redirect("/")
 
 
 #logout button on other pages will redirect to this

@@ -101,27 +101,27 @@ def get_fbid(id, index):
     events = get_events(id)
     return db.users.find_one({"_id":id}).get("events, name=ename, food-selections}
     
-    
-    #Testing
-    '
-    add_event(123456789,"Halloween Party","spooookkyyyy","kittens","pizza","10/31/15","my house","http://STUFF",["abby","sophia"],["nadia"],["jenny"],not_responded=["benedict"])
-    
-    
-    register_user("mchaiken",123456789);
-    print add_event(123456789,"Birthday","A party for my bday gonna be lost a fun","kittens","pizza","10/31/15","my house","http://STUFF",["abby","sophia"],["nadia"],["jenny"],not_responded=["benedict"])
-    
-    events= get_events(123456789)
-    print "FIRST"
-    
-    for event in events:
+
+#Testing
+
+add_event(123456789,"Halloween Party","spooookkyyyy","kittens","pizza","10/31/15","my house","http://STUFF",["abby","sophia"],["nadia"],["jenny"])
+
+
+register_user("mchaiken",123456789);
+print add_event(123456789,"Birthday","A party for my bday gonna be lost a fun","kittens","pizza","10/31/15","my house","http://STUFF",["abby","sophia"],["nadia"],["jenny"])
+
+events= get_events(123456789)
+print "FIRST"
+
+for event in events:
     print event
     print "\n\n"
-    remove_event(123456789,0);
-    print "SECOND"
-    events=get_events(123456789);
-    for event in events:
+remove_event(123456789,0);
+print "SECOND"
+events=get_events(123456789);
+for event in events:
     print event
     print "\n\n"
-    #print get_attending(123456789,0);
+#print get_attending(123456789,0);
+'''    
     
-    '''

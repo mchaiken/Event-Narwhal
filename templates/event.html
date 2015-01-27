@@ -197,77 +197,7 @@
                 
             </div> <!-- /panel -->
 			
-            <div class="panel panel-primary">
-                
-                <div class="panel-heading">
-                    <center>
-                        <h3 class="panel-title">To Do List</h3>
-                    </center>
-                </div> <!-- /panel-heading -->
-                
-                <div class="panel-body">
-                    <center>
-                        
-		      <input type="text" class= "form-control"style="width:inherit" id="new item" placeholder="to-do item"><br>
-					      <button id= "add" class='btn btn-warning'name="add" type="submit">Add Item</button>
-			  <h4>To Do</h4>
-			  
-					  	<ul id= "to_do">
-					  		{{event["to_do"]}}
-					  	</ul>
-					  
-
-					  <h4>Done</h4>
-					  
-
-					  <ul id="done"></ul>
-                        
-                    </center>
-					<script>
-					// Retrieve
-					var MongoClient = require('mongodb').MongoClient;
-					console.log("User:"+{{user}});
-					// Connect to the db
-					MongoClient.connect("mongodb://localhost:27017/exampleDb", function(err, db) {
-					  if(!err) {
-					    console.log("We are connected");
-					  }
-					});
-					var collection= db.collection('event_narwhal');
-					var user= collection.findOne({ _id:{{user}} }, function(err, item) {});
-					var events = user["events"];
-					
-					var button =document.getElementById("add");
-
-					var removeItem =function(e){
-						var todo = document.getElementById("to_do");
-						var done = document.getElementById("done");
-						this.classList.add("grey");
-						this.classList.remove("active");
-						this.children[0].disabled=true;
-						this.children[0].checked=true;
-						done.appendChild(this);
-						
-					};
-
-					var addItem = function(e){
-						console.log("add item")
-					    var todo = document.getElementById("to_do");
-						var newitem = document.createElement('li');
-						newitem.classList.add("active");
-						newitem.innerHTML= "<input type='checkbox''> "+document.getElementById("new item").value
-						newitem.addEventListener('click',removeItem)
-						todo.appendChild(newitem);
-						events[{{index}}]["to_do"]=todo.getInnerHTML();
-					        collection.update({_id: {{user}},},{$set: {events:events}});
-					};
-
-  					button.addEventListener('click',addItem);
-					</script>
-                </div> <!-- /panel-body -->
-                
-            </div> 
-            
+    
         </div> <!-- /col -->
         
     </div> <!-- /row -->
@@ -287,9 +217,16 @@
         </div> <!-- /col -->
         
         <div class="col-md-offset-6">
-            
-            <a>
-            <button class="btn btn-danger btn-lg">
+            <script>
+			var conf= function conf(event_id){
+				var x;
+				if (confirm('Are you sure you want to permanently delete this event?') {
+					Window.location.href="/"+event_id+"/remove";
+				}
+			};
+			</script>
+            <a onclick=>
+            <button onclick="conf({{index}});" class="btn btn-danger btn-lg">
                 Delete Event
             </button>
             </a>
