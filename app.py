@@ -45,8 +45,6 @@ def getResults( attribute, search ):
          url = "http://api.yummly.com/v1/api/recipes?maxResult=100&_app_id=dd74dd78&_app_key=992e5769b7da1040ad87d47328a4182e&q="
          search = search.split(",")
          for ingredient in search:
-             if ingredient[0] == " ":
-                 ingredient = ingredient[1:]
                  url += "&allowedIngredient[]=" + ingredient.lower()
     request = urllib2.urlopen(url)
     result = request.read()
