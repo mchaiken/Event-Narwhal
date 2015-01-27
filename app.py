@@ -82,15 +82,7 @@ def home():
                         print "cooookieee"
                         session["token"] = cookie["access_token"]
                         print "sesssioonnn"
-                        session["user"] = FB.getID( session["token"] )
-                        session["name"] = FB.getName( session["token"] )
-                        if database_actions.isRegistered( session["user"] ):
-                            print "logging in"    
-                            database_actions.login_user( session["user"] )
-                        else:
-                                print "registering "
-                                database_actions.register_user( session["name"], session["user"] )
-                        #return redirect( "/" )
+                return redirect( "/login" )
                 return render_template( "home.html" )
         return render_template( "my_events.html", events=database_actions.get_events( session["user"] ) )
 
@@ -194,10 +186,15 @@ def update( event_id ):
 
 @app.route( "/login" )
 def login():
-        #this is temporary until we have fb working
-        #page will have button to return to login page
-        #session['user'] = 123456789
-        return redirect( "/" )
+    session["user"] = FB.getID( session["token"] )
+    session["name"] = FB.getName( session["token"] )
+    if database_actions.isRegistered( session["user"] ):
+        print "logging in"
+        database_actions.login_user( session["user"] )
+    else:
+        print "registering "
+        database_actions.register_user( session["name"], session["user"] )
+    return redirect( "/" )
 
 
 @app.route( "/8tracks", methods = ["GET", "POST"] )
