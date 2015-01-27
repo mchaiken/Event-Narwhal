@@ -152,8 +152,8 @@
                     <center>
                         
                         <!-- /<a href="http://www.yummly.com/recipe/{{ event['food'] }}"> Check out {{ event["food"].split("-")[: event["food"].split("-")|length -1]|join(" ")}} on Yummly</a> -->
-        
-<object data="http://www.yummly.com/recipe/{{ event['food'] }}" width="inherit" height="400"> <embed src="http://www.yummly.com/recipe/{{ event['food'] }}" width="inherit" height="400"> </embed> Error: Embedded data could not be displayed. </object>
+                        
+                        <object data="http://www.yummly.com/recipe/{{ event['food'] }}" width="inherit" height="400"> <embed src="http://www.yummly.com/recipe/{{ event['food'] }}" width="inherit" height="400"> </embed> Error: Embedded data could not be displayed. </object>
                     </center>
                 </div> <!-- /panel-body -->
                 
@@ -185,43 +185,54 @@
                 </div> <!-- /panel-body -->
                 
             </div> <!-- /panel -->
-			
-    
+            
+            
         </div> <!-- /col -->
         
     </div> <!-- /row -->
     
-    <!-- edit/delete buttons -->
     
+    <!-- edit/delete/reload buttons -->
     <div class="row">
         
+        <!-- reload -->
         <div class="col-md-4">
             
-            <a href="/settings/{{index}}">
-                <button class="btn btn-info btn-lg">
-                    Edit Event
-                </button>
-            </a>
+            <center>
+                <a href = "{{index}}/update">
+                    <input type="button" class="btn btn-lg btn-primary" value="Reload from FB"/>
+                </a>
+            </center>
             
         </div> <!-- /col -->
         
-        <div class="col-md-offset-4">
+        <!-- edit -->
+        <div class="col-md-4 col-md-4-offset-4">
             
-   
-            <input type="button"  onclick="myFunction({{index}})" class="btn btn-danger btn-lg" value="Delete Event"/>
-   
-	    <script>
-	function myFunction(index) {
-		if( confirm("Are you sure you want to delete this event forever?") == true){
-	window.location.href="/event/"+index+"/remove";
-		}
-	}
-	    </script>
-	</div>
-	<div class="col-md-4 col-md-offset-8">
-	  <a href = "{{index}}/update">
-            <input type= "button" class="btn btn-danger btn-lg" value="Reload from FB">  
-            </a>
+            <center>
+                <a href="/settings/{{index}}">
+                    <button class="btn btn-lg btn-info">
+                        Edit Event
+                    </button>
+                </a>
+            </center>
+            
+        </div>
+        
+        <!-- delete -->
+        <div class="col-md-4 col-md-4-offset-8">
+            
+            <center>
+                <input type="button" onclick="myFunction({{index}})" class="btn btn-lg btn-danger" value="Delete Event"/>
+                
+                <script>
+                    function myFunction(index) {
+                        if( confirm("Are you sure you want to delete this event forever?") == true){
+                            window.location.href="/event/"+index+"/remove";
+                        }
+                    }
+                </script>
+            </center>
             
         </div> <!-- /col -->
         
