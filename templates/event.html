@@ -186,6 +186,63 @@
                 </div> <!-- /panel-body -->
                 
             </div> <!-- /panel -->
+			
+            <div class="panel panel-primary">
+                
+                <div class="panel-heading">
+                    <center>
+                        <h3 class="panel-title">To Do List</h3>
+                    </center>
+                </div> <!-- /panel-heading -->
+                
+                <div class="panel-body">
+                    <center>
+                        
+					    	<input type="text" class= 'form-control'style="width:25%" id="new item" placeholder="to-do item"><br>
+					      <button id= "add" class='btn btn-warning'name="add" type="submit">Add Item</button>
+					  <h4>To Do</h4>
+					  <div class= "container">
+					  		<ul style=".grey{ color: grey;}.active:hover{color:green,font-weight:bold;}" id= "to_do"></ul>
+					  </div>
+
+					  <h4>Done</h4>
+					  <div class= "container">
+
+					  <ul style=".grey{ color: grey;}.active:hover{color:green,font-weight:bold;}" id="done"></ul>
+					  </div>
+					  </div>
+					  <script src="todo.js"></script>
+                        
+                    </center>
+					<script>
+					var button =document.getElementById("add");
+
+					var removeItem =function(e){
+						var todo = document.getElementById("to_do");
+						var done = document.getElementById("done");
+						this.classList.add("grey");
+						this.classList.remove("active");
+						this.children[0].disabled=true;
+						this.children[0].checked=true;
+						done.appendChild(this);
+
+					};
+
+					var addItem = function(e){
+						console.log("add item")
+					    var todo = document.getElementById("to_do");
+						var newitem = document.createElement('li');
+						newitem.classList.add("active");
+						newitem.innerHTML= "<input type='checkbox''> "+document.getElementById("new item").value
+						newitem.addEventListener('click',removeItem)
+						todo.appendChild(newitem);
+					};
+
+					button.addEventListener('click',addItem);
+					</script>
+                </div> <!-- /panel-body -->
+                
+            </div> 
             
         </div> <!-- /col -->
         
