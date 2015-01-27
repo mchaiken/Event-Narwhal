@@ -151,9 +151,9 @@
                 <div class="panel-body">
                     <center>
                         
-                        <!-- /<a href="http://www.yummly.com/recipe/{{ event['food'] }}"> Check out {{ event["food"].split("-")[: event["food"].split("-")|length -1]|join(" ")}} on Yummly</a> -->
-                        
+                        {% if event["food"]|length!=0 %}
                         <object data="http://www.yummly.com/recipe/{{ event['food'] }}" width="inherit" height="400"> <embed src="http://www.yummly.com/recipe/{{ event['food'] }}" width="inherit" height="400"> </embed> Error: Embedded data could not be displayed. </object>
+			{% endif %}
                     </center>
                 </div> <!-- /panel-body -->
                 
@@ -174,9 +174,9 @@
                 
                 <div class="panel-body">
                     <center>
-                        
+                    {% if event["8tracks"]|length!=0 %}    
                         <iframe src="{{ event['8tracks'] }}" width="300" height="300" style="border: 0px none;"></iframe>
-                        
+                        {% endif %}
                         <!--
                          <p class="_8t_embed_p" style="font-size: 11px; line-height: 12px;"><a href="?utm_medium=trax_embed">{{mixTitle}}</a> from <a href="?utm_medium=trax_embed">{{mixDJ}}</a> on <a href="http://8tracks.com?utm_medium=trax_embed">8tracks Radio</a>.</p>
                          -->
