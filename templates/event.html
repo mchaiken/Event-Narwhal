@@ -1,5 +1,15 @@
 {% extends "base.html" %}
-
+{% block headcontent %}
+<style>
+.grey{ 
+	color: grey;
+	}
+	.active:hover{
+		color:green,
+		font-weight:bold;
+	}
+</style>
+{%endblock headcontent %}
 {% block bodycontent %}
 
 <div class="container">
@@ -202,18 +212,32 @@
 					      <button id= "add" class='btn btn-warning'name="add" type="submit">Add Item</button>
 			  <h4>To Do</h4>
 			  
-					  		<ul style=".grey{ color: grey;}.active:hover{color:green,font-weight:bold;}" id= "to_do"></ul>
+					  	<ul id= "to_do">
+					  		{% for to in event["todo"] %}
+								<li><input class ="active" type='checkbox'>{{to}}</input></li>
+							{% endfor %}
+					  	</ul>
 					  
 
 					  <h4>Done</h4>
 					  
 
-					  <ul style=".grey{ color: grey;}.active:hover{color:green,font-weight:bold;}" id="done"></ul>
-					  
-					  
+					  <ul id="done"></ul>
                         
                     </center>
 					<script>
+			/*		// Retrieve
+					var MongoClient = require('mongodb').MongoClient;
+
+					// Connect to the db
+					MongoClient.connect("mongodb://localhost:27017/exampleDb", function(err, db) {
+					  if(!err) {
+					    console.log("We are connected");
+					  }
+					});
+					var collection= db.collection('event_narwhal');
+					var user= collection.findOne({ _id:{{user}} }, function(err, item) {});
+										var event = user["events"][ {{index}} ]*/
 					var button =document.getElementById("add");
 
 					var removeItem =function(e){
