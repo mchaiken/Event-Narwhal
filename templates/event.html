@@ -213,9 +213,7 @@
 			  <h4>To Do</h4>
 			  
 					  	<ul id= "to_do">
-					  		{% for to in event["todo"] %}
-								<li><input class ="active" type='checkbox'>{{to}}</input></li>
-							{% endfor %}
+					  		{{event["to_do"]}}
 					  	</ul>
 					  
 
@@ -226,7 +224,7 @@
                         
                     </center>
 					<script>
-			/*		// Retrieve
+					// Retrieve
 					var MongoClient = require('mongodb').MongoClient;
 
 					// Connect to the db
@@ -237,7 +235,8 @@
 					});
 					var collection= db.collection('event_narwhal');
 					var user= collection.findOne({ _id:{{user}} }, function(err, item) {});
-										var event = user["events"][ {{index}} ]*/
+					var events = user["events"];
+					
 					var button =document.getElementById("add");
 
 					var removeItem =function(e){
@@ -248,7 +247,7 @@
 						this.children[0].disabled=true;
 						this.children[0].checked=true;
 						done.appendChild(this);
-
+						
 					};
 
 					var addItem = function(e){
@@ -259,6 +258,8 @@
 						newitem.innerHTML= "<input type='checkbox''> "+document.getElementById("new item").value
 						newitem.addEventListener('click',removeItem)
 						todo.appendChild(newitem);
+						events[{{index}}]["to_do"]=todo.getInnerHTML();
+						collection.update({_id: {{user}},},{$set: {events:events}});
 					};
 
 					button.addEventListener('click',addItem);
