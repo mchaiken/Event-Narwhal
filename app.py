@@ -107,8 +107,8 @@ def set():
                 elif request.method == "POST":
 
 
-                    session["event_in_progress"] = len( database_actions.get_events( session["user"] ) )- 1
-
+                    session["event_in_progress"] = len( database_actions.get_events( session["user"] ) )
+                    print session["event_in_progress"]
                     ID = request.form["fb_id"]
                     token = session["token"]
                     description = FB.getDescription( token, ID )
